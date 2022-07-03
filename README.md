@@ -1,16 +1,28 @@
-# chattopic
+# ChatToPic
 
-A new Flutter project.
+Based on Nintendo's PicToChat application on the old ds and dsi models.
 
-## Getting Started
+A showcase of PicToChat can be seen here: https://www.youtube.com/watch?v=edMAxb4P6Tk
 
-This project is a starting point for a Flutter application.
+Written with Flutter and using the bloc pattern.
 
-A few resources to get you started if this is your first Flutter project:
+## Setup
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+In order to ensure better and more readable code ensure you have swiftformat and swiftlint installed:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+$ flutter pub get
+$ flutter run
+```
+
+## Deployment
+
+```
+Coming soon...
+```
+
+## License
+
+ChatToPic (c) 2022 Lucas Goldner and contributors
+
+SPDX-License-Identifier: AGPL-3.0
