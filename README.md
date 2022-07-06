@@ -12,7 +12,12 @@ In order to ensure better and more readable code ensure you have swiftformat and
 
 ```
 $ flutter pub get
-$ flutter run
+
+# For dev run
+$ flutter run --flavor dev -t lib/flavours/main_dev.dart
+
+# For prod run
+$ flutter run --flavor prod -t lib/flavours/main_prod.dart
 ```
 
 ## Deployment
