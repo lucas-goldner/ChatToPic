@@ -9,11 +9,11 @@ extension FlavourTypeExtension on Environment {
   Color? getFlavourColor() {
     switch (this) {
       case Environment.dev:
-        return Colors.yellow[800]!;
+        return Colors.yellow[800];
       case Environment.prod:
         return Colors.grey[600];
       default:
-        return Colors.blue[600]!;
+        return Colors.blue[600];
     }
   }
 

@@ -4,6 +4,6 @@ import 'package:chattopic/model/enum/environment.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  Constants.setEnvironment(Environment.prod);
-  runApp(const MyApp());
+  FlavourConfig.setEnvironment(Environment.prod);
+  runApp(const Main());
 }
