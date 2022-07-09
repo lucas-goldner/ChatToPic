@@ -1,7 +1,7 @@
 import 'package:chattopic/model/enum/environment.dart';
 
-class Constants {
-  static late Map<String, dynamic> _config;
+class FlavourConfig {
+  static Map<String, dynamic> _config = {};
 
   static void setEnvironment(Environment env) {
     switch (env) {
@@ -22,11 +22,11 @@ class Constants {
 class _Config {
   static const flavour = 'flavour';
 
-  static Map<String, dynamic> debugConstants = {
+  static const Map<String, dynamic> debugConstants = {
     flavour: 'dev',
   };
 
-  static Map<String, dynamic> prodConstants = {
+  static const Map<String, dynamic> prodConstants = {
     flavour: 'prod',
   };
 }

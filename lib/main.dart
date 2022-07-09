@@ -1,16 +1,17 @@
 import 'package:chattopic/generated/l10n.dart';
-import 'package:chattopic/ui/onboarding/onboarding_main.dart';
+import 'package:chattopic/ui/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Main extends StatelessWidget {
+  const Main({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ChatToPic',
       debugShowCheckedModeBanner: false,
+      key: const Key("MainApp"),
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -22,26 +23,9 @@ class MyApp extends StatelessWidget {
         fontFamily: "NDS12",
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const Home(
+        key: Key("Home"),
+      ),
     );
   }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        body: const OnboardingMain(),
-        extendBodyBehindAppBar: true,
-      );
 }

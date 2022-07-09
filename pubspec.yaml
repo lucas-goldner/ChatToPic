@@ -20,9 +20,11 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  dart_code_metrics: ^4.14.0
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  test: any
 
 # The following section is specific to Flutter packages.
 flutter:
