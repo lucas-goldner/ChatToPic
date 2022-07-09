@@ -1,4 +1,4 @@
-import 'package:chattopic/ui/onboarding/onboarding_background.dart';
+import 'package:chattopic/ui/shared/ds_background.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingMain extends StatefulWidget {
@@ -12,7 +12,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: const [OnboardingBackground()],
+      children: const [DSBackground()],
     );
   }
 }
