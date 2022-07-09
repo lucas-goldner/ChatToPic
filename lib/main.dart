@@ -9,8 +9,8 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      locale: const Locale("ja"),
+      key: const Key("MainApp"),
+      title: 'ChatToPic',
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -22,7 +22,10 @@ class Main extends StatelessWidget {
         fontFamily: "NDS12",
         primarySwatch: Colors.blue,
       ),
-      home: const Home(title: 'Flutter Demo Home Page'),
+      home: const Home(
+        title: 'Flutter Demo Home Page',
+        key: Key("Home"),
+      ),
     );
   }
 }
