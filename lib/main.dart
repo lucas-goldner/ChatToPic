@@ -19,10 +19,7 @@ class Main extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      theme: ThemeData(
-        fontFamily: "NDS12",
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(fontFamily: "NDS12"),
       home: const Home(
         key: Key("Home"),
       ),
