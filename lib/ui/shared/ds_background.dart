@@ -1,4 +1,4 @@
-import 'package:chattopic/ui/onboarding/constants/chat_to_pic_colors.dart';
+import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
 import 'package:flutter/material.dart';
 
 class DSBackground extends StatelessWidget {
