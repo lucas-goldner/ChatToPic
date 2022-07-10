@@ -10,7 +10,7 @@ class DSBackground extends StatelessWidget {
 
     return CustomPaint(
       painter: DSBackgroundPainter(size),
-      size: Size(size.width, size.height),
+      size: size,
     );
   }
 }
@@ -26,9 +26,7 @@ class DSBackgroundPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 
   void _paintLinesBackground(Canvas canvas, Size size) {
     // ScaleFactor is used to scale the background to the whole screen.
