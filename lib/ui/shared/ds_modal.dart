@@ -1,29 +1,54 @@
+import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
+import 'package:chattopic/ui/constants/ds_modal_constants.dart';
 import 'package:chattopic/ui/shared/pixel_border.dart';
 import 'package:flutter/material.dart';
-
-const double _modalHeight = 140;
-const double _modalWidth = 340;
-const Radius _borderRaidus = Radius.circular(8.0);
-const double _pixelSize = 2.0;
 
 class DSModal extends StatelessWidget {
   const DSModal({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10.0),
-      decoration: ShapeDecoration(
-        shape: PixelBorder.solid(
-          pixelSize: _pixelSize,
-          borderRadius: const BorderRadius.all(_borderRaidus),
+    return Stack(
+      children: [
+        Center(
+          child: Container(
+            decoration: ShapeDecoration(
+              shape: PixelBorder.solid(
+                pixelSize: DSModalConstants.pixelSize,
+                borderRadius:
+                    const BorderRadius.all(DSModalConstants.borderRaidus),
+              ),
+            ),
+            height: DSModalConstants.modalHeight,
+            width: DSModalConstants.modalWidth,
+          ),
         ),
-      ),
-      height: _modalHeight,
-      width: _modalWidth,
-      child: Container(
-        color: Colors.red,
-      ),
+        Center(
+          child: Container(
+            decoration: ShapeDecoration(
+              shape: PixelBorder.solid(
+                color: ChatToPicColors.dsModalOutlineColor,
+                pixelSize: DSModalConstants.pixelSize,
+                borderRadius: const BorderRadius.all(Radius.circular(6)),
+              ),
+            ),
+            height: DSModalConstants.orangeHeight,
+            width: DSModalConstants.orangeWidth,
+          ),
+        ),
+        Center(
+          child: Container(
+            decoration: ShapeDecoration(
+              shape: PixelBorder.solid(
+                pixelSize: DSModalConstants.smallerPixelSize,
+                borderRadius: const BorderRadius.all(Radius.circular(4)),
+              ),
+            ),
+            height: DSModalConstants.smallestHeight,
+            width: DSModalConstants.smallestWidth,
+          ),
+        ),
+      ],
     );
   }
 }
