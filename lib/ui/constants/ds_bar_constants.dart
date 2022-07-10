@@ -2,7 +2,7 @@ import 'package:chattopic/model/ds_bar_section.dart';
 
 class DSBarConstants {
   static const double barHeight = 88;
-
+  // Every original ds pixel is represented by 8 px.
   static final List<DSBarSection> sections = [
     DSBarSection(0, 80),
     DSBarSection(8, 70),

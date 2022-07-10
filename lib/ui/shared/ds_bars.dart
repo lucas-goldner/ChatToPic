@@ -1,7 +1,7 @@
 import 'package:chattopic/extensions/color_extension.dart';
 import 'package:chattopic/helper/canvas_args.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
-import 'package:chattopic/ui/constants/ds_bars_constants.dart';
+import 'package:chattopic/ui/constants/ds_bar_constants.dart';
 import 'package:flutter/material.dart';
 
 class DSBars extends StatelessWidget {
@@ -69,8 +69,8 @@ class DSBarBackgroundPainter extends CustomPainter {
       } else if (intIndex == DSBarConstants.sections[5].stop) {
         _pixelizedTripleRow(
           canvasArgs,
-          color.getColor().lighten(40),
-          color.getColor().lighten(30),
+          color.getColor().lighten(DSBarConstants.sections[4].lightenValue),
+          color.getColor().lighten(DSBarConstants.sections[5].lightenValue),
           intIndex.toDouble(),
         );
       } else {
@@ -97,27 +97,27 @@ class DSBarBackgroundPainter extends CustomPainter {
   ) {
     final postion1 = Offset(0, index);
     final postion2 = Offset(canvasArgs.size.width, index);
+    final section4 = DSBarConstants.sections[4].stop;
+    final section7 = DSBarConstants.sections[7].stop;
 
     if (index < DSBarConstants.sections[2].stop &&
         index >= DSBarConstants.sections[1].stop) {
-      canvasArgs.paint.color = color.lighten(70);
+      canvasArgs.paint.color =
+          color.lighten(DSBarConstants.sections[1].lightenValue);
       canvasArgs.canvas.drawLine(postion1, postion2, canvasArgs.paint);
-    } else if (index < DSBarConstants.sections[4].stop &&
-        index > DSBarConstants.sections[3].stop) {
-      canvasArgs.paint.color = color.lighten(50);
+    } else if (index < section4 && index > DSBarConstants.sections[3].stop) {
+      canvasArgs.paint.color =
+          color.lighten(DSBarConstants.sections[3].lightenValue);
       canvasArgs.canvas.drawLine(postion1, postion2, canvasArgs.paint);
-    } else if (index < DSBarConstants.sections[5].stop &&
-        index > DSBarConstants.sections[4].stop) {
+    } else if (index < DSBarConstants.sections[5].stop && index > section4) {
       canvasArgs.paint.color =
           color.lighten(DSBarConstants.sections[4].lightenValue);
       canvasArgs.canvas.drawLine(postion1, postion2, canvasArgs.paint);
-    } else if (index < DSBarConstants.sections[7].stop &&
-        index > DSBarConstants.sections[6].stop) {
+    } else if (index < section7 && index > DSBarConstants.sections[6].stop) {
       canvasArgs.paint.color =
           color.lighten(DSBarConstants.sections[6].lightenValue);
       canvasArgs.canvas.drawLine(postion1, postion2, canvasArgs.paint);
-    } else if (index < DSBarConstants.sections[8].stop &&
-        index > DSBarConstants.sections[7].stop) {
+    } else if (index < DSBarConstants.sections[8].stop && index > section7) {
       canvasArgs.paint.color =
           color.lighten(DSBarConstants.sections[7].lightenValue);
       canvasArgs.canvas.drawLine(postion1, postion2, canvasArgs.paint);
