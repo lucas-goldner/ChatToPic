@@ -20,9 +20,9 @@ class _OnboardingMainState extends State<OnboardingMain> {
     return Stack(
       children: [
         const DSBackground(),
-        const DSBars(FavoriteColor.lightPurple),
+        const DSBars(FavoriteColor.grey),
         Center(
-          child: DSModal(S.of(context).helloWorld),
+          child: DSModal(S.of(context).beforeYouBegin),
         ),
       ],
     );

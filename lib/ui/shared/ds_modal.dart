@@ -1,4 +1,5 @@
 import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
+import 'package:chattopic/ui/constants/chat_to_pic_text_styles.dart';
 import 'package:chattopic/ui/constants/ds_modal_constants.dart';
 import 'package:chattopic/ui/painters/ds_modal_background_painter.dart';
 import 'package:chattopic/ui/shared/pixel_border.dart';
@@ -60,10 +61,21 @@ class DSModal extends StatelessWidget {
           ),
         ),
         Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-              color: Colors.white,
+          child: SizedBox(
+            height: DSModalConstants.smallestHeight,
+            width: DSModalConstants.smallestWidth,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8, right: 8, bottom: 4),
+              child: Center(
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: ChatToPicTextStyles().getDefaultTextStyle(
+                    fontsize: fontSize14,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
           ),
         ),
