@@ -1,3 +1,4 @@
+import 'package:chattopic/generated/l10n.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/ui/shared/ds_background.dart';
 import 'package:chattopic/ui/shared/ds_bars.dart';
@@ -17,11 +18,11 @@ class _OnboardingMainState extends State<OnboardingMain> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: const [
-        DSBackground(),
-        DSBars(FavoriteColor.lightPurple),
+      children: [
+        const DSBackground(),
+        const DSBars(FavoriteColor.lightPurple),
         Center(
-          child: DSModal(),
+          child: DSModal(S.of(context).helloWorld),
         ),
       ],
     );

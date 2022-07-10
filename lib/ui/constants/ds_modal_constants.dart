@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class DSModalConstants {
-  static const double modalHeight = 140;
+  static const double modalHeight = 100;
   static const double modalWidth = 340;
   static const Radius borderRaidus = Radius.circular(8.0);
   static const Radius orangeBorderRaidus = Radius.circular(6.0);
