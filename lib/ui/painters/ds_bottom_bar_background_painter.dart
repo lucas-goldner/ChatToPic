@@ -1,5 +1,5 @@
-import 'package:chattopic/extensions/color_extension.dart';
 import 'package:chattopic/helper/canvas_args.dart';
+import 'package:chattopic/helper/extensions/color_extension.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/ui/constants/ds_bar_constants.dart';
 import 'package:flutter/material.dart';
