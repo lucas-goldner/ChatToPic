@@ -1,4 +1,5 @@
 import 'package:chattopic/model/enum/favorite_color.dart';
+import 'package:chattopic/ui/shared/dashed_border.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,8 @@ const _colorSize = 16.0;
 class _OnboardingColorSelectState extends State<OnboardingColorSelect> {
   int selectedColorIndex = 0;
 
+  void selectColor(index) => setState(() => selectedColorIndex = index);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,8 +41,8 @@ class _OnboardingColorSelectState extends State<OnboardingColorSelect> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 32.0, vertical: 4.0),
                 child: GridView.count(
-                  crossAxisSpacing: 32,
-                  mainAxisSpacing: 32,
+                  crossAxisSpacing: 28,
+                  mainAxisSpacing: 28,
                   crossAxisCount: 4,
                   shrinkWrap: true,
                   padding: const EdgeInsets.only(top: 0),
@@ -47,22 +50,29 @@ class _OnboardingColorSelectState extends State<OnboardingColorSelect> {
                   children: FavoriteColor.values
                       .mapIndexed(
                         (index, favColor) => selectedColorIndex == index
-                            ? Container(
-                                width: _colorSize,
-                                height: _colorSize,
-                                decoration: BoxDecoration(
+                            ? GestureDetector(
+                                onTap: () => selectColor(index),
+                                child: DashedBorder(
                                   color: favColor.getColor(),
-                                  border: const Border.fromBorderSide(
-                                    BorderSide(
-                                      color: Colors.black,
-                                    ),
+                                  strokeWidth: 3.0,
+                                  gap: 4.0,
+                                  child: Container(
+                                    margin: const EdgeInsets.all(4.0),
+                                    padding: const EdgeInsets.all(4.0),
+                                    width: _colorSize,
+                                    height: _colorSize,
+                                    color: favColor.getColor(),
                                   ),
                                 ),
                               )
-                            : Container(
-                                color: favColor.getColor(),
-                                width: _colorSize,
-                                height: _colorSize,
+                            : GestureDetector(
+                                onTap: () => selectColor(index),
+                                child: Container(
+                                  margin: const EdgeInsets.all(4.0),
+                                  color: favColor.getColor(),
+                                  width: _colorSize,
+                                  height: _colorSize,
+                                ),
                               ),
                       )
                       .toList(),

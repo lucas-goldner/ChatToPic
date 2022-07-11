@@ -19,7 +19,6 @@ dependencies:
   # Icons
   cupertino_icons: ^1.0.2
   collection: ^1.16.0
-  dotted_border: ^2.0.0+2
 
 dev_dependencies:
   dart_code_metrics: ^4.14.0
