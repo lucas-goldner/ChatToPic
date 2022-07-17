@@ -1,6 +1,6 @@
 import 'package:chattopic/generated/l10n.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
-import 'package:chattopic/ui/onboarding/onboarding_color_select.dart';
+import 'package:chattopic/ui/onboarding/onboarding_color.dart';
 import 'package:chattopic/ui/shared/ds_background.dart';
 import 'package:chattopic/ui/shared/ds_bars.dart';
 import 'package:chattopic/ui/shared/ds_modal.dart';
@@ -29,7 +29,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
         currentWidget = DSModal(S.of(context).beforeYouBegin);
         break;
       case 1:
-        currentWidget = const OnboardingColorSelect();
+        currentWidget = const OnboardingColor();
         break;
     }
 
