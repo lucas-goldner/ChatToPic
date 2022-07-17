@@ -1,5 +1,6 @@
 import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/ui/constants/chat_to_pic_color_select_constants.dart';
+import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
 import 'package:chattopic/ui/shared/dashed_border.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -26,56 +27,82 @@ class _OnboardingColorSelectState extends State<OnboardingColorSelect> {
         spacing: ChatToPicColorSelectConstants.spacingBetweenWidgets,
         children: [
           Container(
-            height: ChatToPicColorSelectConstants.colorsContainerSize,
-            width: ChatToPicColorSelectConstants.colorsContainerSize,
-            color: Colors.white,
-            child: Center(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32.0, vertical: 4.0),
-                child: GridView.count(
-                  crossAxisSpacing:
-                      ChatToPicColorSelectConstants.gridCrossAxisSpacing,
-                  mainAxisSpacing:
-                      ChatToPicColorSelectConstants.gridMainAxisSpacing,
-                  crossAxisCount: ChatToPicColorSelectConstants.crossAxisCount,
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.only(top: 0),
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: FavoriteColor.values.mapIndexed(
-                    (index, favColor) {
-                      Color color = favColor.getColor();
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                  color: ChatToPicColors.colorsContainerSecondBorder,
+                  width: 2.0,
+                ),
+                right: BorderSide(
+                  color: ChatToPicColors.colorsContainerSecondBorder,
+                  width: 2.0,
+                ),
+              ),
+            ),
+            child: Container(
+              height: ChatToPicColorSelectConstants.colorsContainerSize,
+              width: ChatToPicColorSelectConstants.colorsContainerSize,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                border: Border.fromBorderSide(
+                  BorderSide(
+                    color: ChatToPicColors.colorsContainer,
+                    width: 2.0,
+                  ),
+                ),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 32.0, vertical: 4.0),
+                  child: GridView.count(
+                    crossAxisSpacing:
+                        ChatToPicColorSelectConstants.gridCrossAxisSpacing,
+                    mainAxisSpacing:
+                        ChatToPicColorSelectConstants.gridMainAxisSpacing,
+                    crossAxisCount:
+                        ChatToPicColorSelectConstants.crossAxisCount,
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(top: 0),
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: FavoriteColor.values.mapIndexed(
+                      (index, favColor) {
+                        Color color = favColor.getColor();
 
-                      return selectedColorIndex == index
-                          ? GestureDetector(
-                              onTap: () => selectColor(index),
-                              child: DashedBorder(
-                                color: color,
-                                strokeWidth: ChatToPicColorSelectConstants
-                                    .borderStrokeWidth,
-                                gap: ChatToPicColorSelectConstants.borderGap,
+                        return selectedColorIndex == index
+                            ? GestureDetector(
+                                onTap: () => selectColor(index),
+                                child: DashedBorder(
+                                  color: color,
+                                  strokeWidth: ChatToPicColorSelectConstants
+                                      .borderStrokeWidth,
+                                  gap: ChatToPicColorSelectConstants.borderGap,
+                                  child: Container(
+                                    margin: const EdgeInsets.all(4.0),
+                                    padding: const EdgeInsets.all(4.0),
+                                    width:
+                                        ChatToPicColorSelectConstants.colorSize,
+                                    height:
+                                        ChatToPicColorSelectConstants.colorSize,
+                                    color: color,
+                                  ),
+                                ),
+                              )
+                            : GestureDetector(
+                                onTap: () => selectColor(index),
                                 child: Container(
                                   margin: const EdgeInsets.all(4.0),
-                                  padding: const EdgeInsets.all(4.0),
+                                  color: color,
                                   width:
                                       ChatToPicColorSelectConstants.colorSize,
                                   height:
                                       ChatToPicColorSelectConstants.colorSize,
-                                  color: color,
                                 ),
-                              ),
-                            )
-                          : GestureDetector(
-                              onTap: () => selectColor(index),
-                              child: Container(
-                                margin: const EdgeInsets.all(4.0),
-                                color: color,
-                                width: ChatToPicColorSelectConstants.colorSize,
-                                height: ChatToPicColorSelectConstants.colorSize,
-                              ),
-                            );
-                    },
-                  ).toList(),
+                              );
+                      },
+                    ).toList(),
+                  ),
                 ),
               ),
             ),
@@ -84,12 +111,32 @@ class _OnboardingColorSelectState extends State<OnboardingColorSelect> {
             height: ChatToPicColorSelectConstants.selectedColorContainerHeight,
             width: ChatToPicColorSelectConstants.selectedColorContainerWidth,
             margin: const EdgeInsets.only(top: 24),
-            color: Colors.grey,
+            decoration: const BoxDecoration(
+              color: Colors.grey,
+              border: Border(
+                bottom: BorderSide(
+                  color: ChatToPicColors.colorsContainerSecondBorder,
+                  width: 2.0,
+                ),
+                right: BorderSide(
+                  color: ChatToPicColors.colorsContainerSecondBorder,
+                  width: 2.0,
+                ),
+              ),
+            ),
             child: Container(
               height: ChatToPicColorSelectConstants.selectedColorHeight,
               width: ChatToPicColorSelectConstants.selectedColorWidth,
               margin: const EdgeInsets.only(top: 24),
-              color: Colors.white,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                border: Border.fromBorderSide(
+                  BorderSide(
+                    color: ChatToPicColors.colorsContainer,
+                    width: 2.0,
+                  ),
+                ),
+              ),
             ),
           ),
         ],
