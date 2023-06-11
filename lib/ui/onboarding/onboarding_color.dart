@@ -56,7 +56,9 @@ class _OnboardingColorState extends State<OnboardingColor> {
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 32.0, vertical: 4.0),
+                    horizontal: 32.0,
+                    vertical: 4.0,
+                  ),
                   child: GridView.count(
                     crossAxisSpacing:
                         ChatToPicColorSelectConstants.gridCrossAxisSpacing,

@@ -1,4 +1,4 @@
-import 'package:chattopic/model/enum/shared_pref_keys.dart';
+import 'package:chattopic/model/enum/shared_pref_key.dart';
 
 abstract class SharedPrefProviderInterface {
   bool get initialized;

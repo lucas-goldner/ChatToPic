@@ -1,4 +1,4 @@
-import 'package:chattopic/model/enum/shared_pref_keys.dart';
+import 'package:chattopic/model/enum/shared_pref_key.dart';
 import 'package:chattopic/providers/interfaces/shared_pref_provider_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,9 +17,9 @@ class SharedPrefProvider implements SharedPrefProviderInterface {
 
   @override
   String getSharedPref(SharedPrefKey sharedPrefKey) =>
-      prefs?.get(sharedPrefKey.getKeyValue()).toString() ?? "";
+      prefs?.get(sharedPrefKey.key).toString() ?? "";
 
   @override
   void setStringInSharedPrefs(SharedPrefKey sharedPrefKey, String value) =>
-      prefs?.setString(sharedPrefKey.getKeyValue(), value);
+      prefs?.setString(sharedPrefKey.key, value);
 }

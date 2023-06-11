@@ -174,5 +174,5 @@ class PixelBorder extends OutlinedBorder {
           side == other.side;
 
   @override
-  int get hashCode => hashValues(pixelSize, borderRadius);
+  int get hashCode => Object.hash(pixelSize, borderRadius);
 }

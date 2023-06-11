@@ -20,7 +20,6 @@ class Main extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(fontFamily: "NDS12"),
-      locale: const Locale("de"),
       home: const Home(
         key: Key("Home"),
       ),
