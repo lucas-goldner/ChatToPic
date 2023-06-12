@@ -1,7 +1,7 @@
 import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/ui/constants/chat_to_pic_color_select_constants.dart';
 import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
-import 'package:chattopic/ui/onboarding/onboarding_color_select.dart';
+import 'package:chattopic/ui/onboarding/color/onboarding_color_select.dart';
 import 'package:chattopic/ui/shared/dashed_border.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';

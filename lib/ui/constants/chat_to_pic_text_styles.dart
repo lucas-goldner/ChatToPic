@@ -12,11 +12,13 @@ class ChatToPicTextStyles {
   TextStyle getDefaultTextStyle({
     Color color = Colors.black,
     double fontsize = _defaultFontSize,
+    double? letterSpacing,
   }) {
     return TextStyle(
       color: color,
       fontSize: fontsize,
       height: _expectedLineHeight / fontsize,
+      letterSpacing: letterSpacing,
     );
   }
 }
