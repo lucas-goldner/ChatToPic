@@ -3,7 +3,6 @@ import 'package:chattopic/ui/constants/chat_to_pic_text_styles.dart';
 import 'package:chattopic/ui/constants/ds_name_input_constants.dart';
 import 'package:chattopic/ui/onboarding/name/onboarding_name_input_names_squares.dart';
 import 'package:chattopic/ui/painters/ds_modal_background_painter.dart';
-import 'package:chattopic/ui/shared/ds_button.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingNameInput extends StatefulWidget {
@@ -22,6 +21,16 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
       _textEditingController.text =
           value.substring(1, DSNameInputConstants.letterLimit) +
               value.substring(0, 1);
+    }
+  }
+
+  void _deleteLastLetter() {
+    String currentText = _textEditingController.text;
+    if (currentText.isNotEmpty) {
+      _textEditingController.text =
+          currentText.substring(0, currentText.length - 1);
+      _textEditingController.selection =
+          TextSelection.collapsed(offset: currentText.length - 1);
     }
   }
 
@@ -101,30 +110,6 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
           ),
         ),
         const OnboardingNameInputNamesSquares(),
-        const Column(
-          children: [
-            Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                DSButton(
-                  title: "Erase",
-                  letter: "B",
-                ),
-                SizedBox(
-                  width: 40,
-                ),
-                DSButton(
-                  title: "Join",
-                  letter: "A",
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 40,
-            ),
-          ],
-        ),
       ],
     );
   }

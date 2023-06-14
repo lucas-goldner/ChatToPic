@@ -4,6 +4,7 @@ import 'package:chattopic/ui/onboarding/color/onboarding_color.dart';
 import 'package:chattopic/ui/onboarding/name/onboarding_name_input.dart';
 import 'package:chattopic/ui/shared/ds_background.dart';
 import 'package:chattopic/ui/shared/ds_bars.dart';
+import 'package:chattopic/ui/shared/ds_button.dart';
 import 'package:chattopic/ui/shared/ds_modal.dart';
 import 'package:flutter/material.dart';
 
@@ -42,10 +43,34 @@ class _OnboardingMainState extends State<OnboardingMain> {
         const DSBackground(),
         const DSBars(FavoriteColor.grey),
         GestureDetector(
+          onTap: goToNextPage,
           child: Center(
             child: currentWidget,
           ),
-          onTap: () => index == 0 ? goToNextPage() : null,
+        ),
+        const Column(
+          children: [
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DSButton(
+                  title: "Erase",
+                  letter: "B",
+                ),
+                SizedBox(
+                  width: 40,
+                ),
+                DSButton(
+                  title: "Input",
+                  letter: "A",
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 40,
+            ),
+          ],
         ),
       ],
     );
