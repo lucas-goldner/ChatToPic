@@ -1,9 +1,8 @@
 import 'package:chattopic/ui/constants/ds_name_input_constants.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingNameInputNames extends StatelessWidget {
-  const OnboardingNameInputNames({super.key});
-  final letterLimit = 10;
+class OnboardingNameInputNamesSquares extends StatelessWidget {
+  const OnboardingNameInputNamesSquares({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +11,14 @@ class OnboardingNameInputNames extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List<Widget>.generate(
-            letterLimit,
+            DSNameInputConstants.letterLimit,
             (index) => Container(
               height: DSNameInputConstants.orangeHeight -
                   DSNameInputConstants.squaresSpacing,
-              width: (DSNameInputConstants.orangeWidth / letterLimit) -
-                  (DSNameInputConstants.squaresSpacing / 10),
+              width: (DSNameInputConstants.orangeWidth /
+                      DSNameInputConstants.letterLimit) -
+                  (DSNameInputConstants.squaresSpacing /
+                      DSNameInputConstants.letterLimit),
               decoration: BoxDecoration(
                 border: Border.fromBorderSide(
                   BorderSide(

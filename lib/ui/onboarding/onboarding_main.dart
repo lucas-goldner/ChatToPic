@@ -45,7 +45,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
           child: Center(
             child: currentWidget,
           ),
-          onTap: () => goToNextPage(),
+          onTap: () => index == 0 ? goToNextPage() : null,
         ),
       ],
     );

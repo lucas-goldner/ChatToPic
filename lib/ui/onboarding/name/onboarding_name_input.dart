@@ -1,12 +1,35 @@
 import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
 import 'package:chattopic/ui/constants/chat_to_pic_text_styles.dart';
 import 'package:chattopic/ui/constants/ds_name_input_constants.dart';
-import 'package:chattopic/ui/onboarding/name/onboarding_name_input_names.dart';
+import 'package:chattopic/ui/onboarding/name/onboarding_name_input_names_squares.dart';
 import 'package:chattopic/ui/painters/ds_modal_background_painter.dart';
+import 'package:chattopic/ui/shared/ds_button.dart';
 import 'package:flutter/material.dart';
 
-class OnboardingNameInput extends StatelessWidget {
-  const OnboardingNameInput({Key? key}) : super(key: key);
+class OnboardingNameInput extends StatefulWidget {
+  const OnboardingNameInput({super.key});
+
+  @override
+  State<OnboardingNameInput> createState() => _OnboardingNameInputState();
+}
+
+class _OnboardingNameInputState extends State<OnboardingNameInput> {
+  final TextEditingController _textEditingController = TextEditingController();
+
+  _onEdit(String value) {
+    if (_textEditingController.text.length >=
+        DSNameInputConstants.letterLimit) {
+      _textEditingController.text =
+          value.substring(1, DSNameInputConstants.letterLimit) +
+              value.substring(0, 1);
+    }
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,24 +75,22 @@ class OnboardingNameInput extends StatelessWidget {
                   padding: const EdgeInsets.all(2),
                   child: SizedBox(
                     height: DSNameInputConstants.smallestHeight,
-                    width: DSNameInputConstants.smallestWidth,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8),
-                      child: Center(
-                        child: TextField(
-                          decoration: InputDecoration.collapsed(
-                            hintStyle:
-                                ChatToPicTextStyles().getDefaultTextStyle(
-                              color: Colors.white,
-                              letterSpacing: DSNameInputConstants.letterSpacing,
-                            ),
-                            hintText: "Username",
-                          ),
-                          style: ChatToPicTextStyles().getDefaultTextStyle(
-                            fontsize: fontSize14,
+                    width: DSNameInputConstants.smallestWidth + 2,
+                    child: Center(
+                      child: TextField(
+                        controller: _textEditingController,
+                        onChanged: _onEdit,
+                        decoration: InputDecoration.collapsed(
+                          hintStyle: ChatToPicTextStyles().getDefaultTextStyle(
                             color: Colors.white,
                             letterSpacing: DSNameInputConstants.letterSpacing,
                           ),
+                          hintText: "Username",
+                        ),
+                        style: ChatToPicTextStyles().getDefaultTextStyle(
+                          fontsize: fontSize14,
+                          color: Colors.white,
+                          letterSpacing: DSNameInputConstants.letterSpacing,
                         ),
                       ),
                     ),
@@ -79,7 +100,31 @@ class OnboardingNameInput extends StatelessWidget {
             ),
           ),
         ),
-        const OnboardingNameInputNames(),
+        const OnboardingNameInputNamesSquares(),
+        const Column(
+          children: [
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DSButton(
+                  title: "Erase",
+                  letter: "B",
+                ),
+                SizedBox(
+                  width: 40,
+                ),
+                DSButton(
+                  title: "Join",
+                  letter: "A",
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 40,
+            ),
+          ],
+        ),
       ],
     );
   }

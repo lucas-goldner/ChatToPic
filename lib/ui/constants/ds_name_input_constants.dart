@@ -13,5 +13,6 @@ class DSNameInputConstants {
   static const double smallestHeight = modalHeight - 12;
   static const double smallestWidth = modalWidth - 12;
   static const double squaresSpacing = 6;
-  static const double letterSpacing = 24;
+  static const double letterSpacing = 25.8;
+  static const int letterLimit = 10;
 }
