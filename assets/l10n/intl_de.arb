@@ -1,4 +1,9 @@
 {
   "beforeYouBegin": "Bevor du startest, musst du deine Systemeinstellungen anpassen. Bitte drücke auf den Touch Screen.",
-  "chooseColor": "Wähle Farbe"
+  "chooseColor": "Wähle Farbe",
+  "erase": "Löschen",
+  "input": "Eingeben",
+  "username": "Username",
+  "goBack": "Zurück",
+  "select": "Auswählen"
 }

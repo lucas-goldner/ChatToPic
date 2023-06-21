@@ -1,4 +1,9 @@
 {
   "beforeYouBegin": "Antes de empezar, ajusta la configuración del sistema. Por favor, toque la pantalla táctil o pulse cualquier botón.",
-  "chooseColor": "Seleccione color"
+  "chooseColor": "Seleccione color",
+  "erase": "Borrar",
+  "input": "Ingresar",
+  "username": "Nombre",
+  "goBack": "Volver",
+  "select": "Seleccionar"
 }

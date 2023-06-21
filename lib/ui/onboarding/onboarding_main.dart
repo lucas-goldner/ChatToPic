@@ -31,48 +31,54 @@ class _OnboardingMainState extends State<OnboardingMain> {
         currentWidget = DSModal(S.of(context).beforeYouBegin);
         break;
       case 1:
-        currentWidget = const OnboardingNameInput();
+        currentWidget = OnboardingNameInput(goToNextPage);
         break;
       case 2:
         currentWidget = const OnboardingColor();
         break;
     }
 
-    return Stack(
-      children: [
-        const DSBackground(),
-        const DSBars(FavoriteColor.grey),
-        GestureDetector(
-          onTap: goToNextPage,
-          child: Center(
+    return GestureDetector(
+      onTap: () => index == 0 ? goToNextPage() : null,
+      child: Stack(
+        children: [
+          const DSBackground(),
+          const DSBars(FavoriteColor.grey),
+          Center(
             child: currentWidget,
           ),
-        ),
-        const Column(
-          children: [
-            Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          Visibility(
+            visible: index == 2,
+            child: Column(
               children: [
-                DSButton(
-                  title: "Erase",
-                  letter: "B",
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DSButton(
+                      title: S.of(context).goBack,
+                      letter: "B",
+                      callback: () => setState(() => index -= 1),
+                      optionalButtonXOffset: 20,
+                    ),
+                    const SizedBox(
+                      width: 40,
+                    ),
+                    DSButton(
+                      title: S.of(context).select,
+                      letter: "A",
+                      optionalButtonXOffset: 32,
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 40,
-                ),
-                DSButton(
-                  title: "Input",
-                  letter: "A",
+                const SizedBox(
+                  height: 40,
                 ),
               ],
             ),
-            SizedBox(
-              height: 40,
-            ),
-          ],
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

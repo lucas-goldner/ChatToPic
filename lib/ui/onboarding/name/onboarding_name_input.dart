@@ -1,12 +1,15 @@
+import 'package:chattopic/generated/l10n.dart';
 import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
 import 'package:chattopic/ui/constants/chat_to_pic_text_styles.dart';
 import 'package:chattopic/ui/constants/ds_name_input_constants.dart';
 import 'package:chattopic/ui/onboarding/name/onboarding_name_input_names_squares.dart';
 import 'package:chattopic/ui/painters/ds_modal_background_painter.dart';
+import 'package:chattopic/ui/shared/ds_button.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingNameInput extends StatefulWidget {
-  const OnboardingNameInput({super.key});
+  const OnboardingNameInput(this.goToNextPage, {super.key});
+  final VoidCallback goToNextPage;
 
   @override
   State<OnboardingNameInput> createState() => _OnboardingNameInputState();
@@ -42,6 +45,8 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
 
   @override
   Widget build(BuildContext context) {
+    final t = S.of(context);
+
     return Stack(
       children: [
         Center(
@@ -94,7 +99,7 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
                             color: Colors.white,
                             letterSpacing: DSNameInputConstants.letterSpacing,
                           ),
-                          hintText: "Username",
+                          hintText: S.of(context).username,
                         ),
                         style: ChatToPicTextStyles().getDefaultTextStyle(
                           fontsize: fontSize14,
@@ -110,6 +115,32 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
           ),
         ),
         const OnboardingNameInputNamesSquares(),
+        Column(
+          children: [
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DSButton(
+                  title: t.erase,
+                  letter: "B",
+                  callback: _deleteLastLetter,
+                ),
+                const SizedBox(
+                  width: 40,
+                ),
+                DSButton(
+                  title: t.input,
+                  letter: "A",
+                  callback: widget.goToNextPage,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+          ],
+        ),
       ],
     );
   }

@@ -1,4 +1,9 @@
 {
   "beforeYouBegin": "Before you begin, you must adjust\n system settings. Please touch the\n Touch Screen or press any button.",
-  "chooseColor": "Choose Color"
+  "chooseColor": "Choose Color",
+  "erase": "Erase",
+  "input": "Input",
+  "username": "Username",
+  "goBack": "Go back",
+  "select": "Select"
 }

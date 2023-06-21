@@ -3,7 +3,9 @@ import 'package:chattopic/ui/painters/common_painters.dart';
 import 'package:flutter/material.dart';
 
 class DSButtonPainter extends CustomPainter {
-  DSButtonPainter();
+  DSButtonPainter({double? optionalButtonXOffset})
+      : buttonXOffset = optionalButtonXOffset ?? 36;
+  final double buttonXOffset;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -36,7 +38,7 @@ class DSButtonPainter extends CustomPainter {
     _paintVerticalLine(size.width - 1, canvasArgs);
 
     paint.color = Colors.black;
-    _paintDrawLetterButton(canvasArgs);
+    _paintDrawLetterButton(canvasArgs, buttonXOffset);
 
     paint.color = const Color.fromARGB(255, 199, 199, 198);
     canvas.drawLine(
@@ -79,12 +81,12 @@ class DSButtonPainter extends CustomPainter {
     );
   }
 
-  _paintDrawLetterButton(CanvasArgs canvasArgs) {
+  _paintDrawLetterButton(CanvasArgs canvasArgs, double xPos) {
     double basicSize = 12;
 
     canvasArgs.canvas.drawRect(
       Rect.fromCenter(
-        center: const Offset(36, 16),
+        center: Offset(xPos, 16),
         width: basicSize + 2,
         height: basicSize + 2,
       ),
@@ -93,7 +95,7 @@ class DSButtonPainter extends CustomPainter {
 
     canvasArgs.canvas.drawRect(
       Rect.fromCenter(
-        center: const Offset(36, 16),
+        center: Offset(xPos, 16),
         width: basicSize - 2,
         height: basicSize + 6,
       ),
@@ -102,7 +104,7 @@ class DSButtonPainter extends CustomPainter {
 
     canvasArgs.canvas.drawRect(
       Rect.fromCenter(
-        center: const Offset(36, 16),
+        center: Offset(xPos, 16),
         width: basicSize + 6,
         height: basicSize - 2,
       ),
