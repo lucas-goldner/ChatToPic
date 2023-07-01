@@ -8,18 +8,29 @@ class SharedPrefProvider implements SharedPrefProviderInterface {
   SharedPreferences? prefs;
 
   @override
-  bool get initialized => prefs != null;
-
-  @override
   Future<void> loadSharedPrefs() async {
     prefs ??= await SharedPreferences.getInstance();
   }
 
   @override
-  String getSharedPref(SharedPrefKey sharedPrefKey) =>
-      prefs?.get(sharedPrefKey.key).toString() ?? "";
+  String getStringSharedPref(SharedPrefKey sharedPrefKey) =>
+      prefs?.getString(sharedPrefKey.key) ?? "";
 
   @override
-  void setStringInSharedPrefs(SharedPrefKey sharedPrefKey, String value) =>
-      prefs?.setString(sharedPrefKey.key, value);
+  bool getBoolSharedPref(SharedPrefKey sharedPrefKey) =>
+      prefs?.getBool(sharedPrefKey.key) ?? false;
+
+  @override
+  Future<void> setStringInSharedPrefs(
+    SharedPrefKey sharedPrefKey,
+    String value,
+  ) async =>
+      await prefs?.setString(sharedPrefKey.key, value);
+
+  @override
+  Future<void> setBoolInSharedPrefs(
+    SharedPrefKey sharedPrefKey,
+    bool value,
+  ) async =>
+      await prefs?.setBool(sharedPrefKey.key, value);
 }

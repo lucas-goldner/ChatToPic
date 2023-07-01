@@ -19,6 +19,7 @@ class ChatToPicTextStyles {
       fontSize: fontsize,
       height: _expectedLineHeight / fontsize,
       letterSpacing: letterSpacing,
+      fontFamily: "NDS12",
     );
   }
 }

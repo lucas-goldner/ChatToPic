@@ -1,11 +1,14 @@
+import 'package:chattopic/cubits/shared_pref/shared_pref_cubit.dart';
 import 'package:chattopic/generated/l10n.dart';
 import 'package:chattopic/ui/style/constants/chat_to_pic_colors.dart';
 import 'package:chattopic/ui/style/constants/chat_to_pic_text_styles.dart';
 import 'package:chattopic/ui/style/constants/ds_name_input_constants.dart';
 import 'package:chattopic/ui/onboarding/name/onboarding_name_input_names_squares.dart';
+import 'package:chattopic/ui/style/helper/show_snackbar.dart';
 import 'package:chattopic/ui/style/painters/ds_modal_background_painter.dart';
 import 'package:chattopic/ui/shared/ds_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnboardingNameInput extends StatefulWidget {
   const OnboardingNameInput(this.goToNextPage, {super.key});
@@ -34,6 +37,16 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
           currentText.substring(0, currentText.length - 1);
       _textEditingController.selection =
           TextSelection.collapsed(offset: currentText.length - 1);
+    }
+  }
+
+  Future<void> _onContinue() async {
+    if (_textEditingController.text.isEmpty) {
+      showSnackBar(context, S.of(context).pleaseEnterName);
+    } else {
+      await BlocProvider.of<SharedPrefCubit>(context)
+          .setUsername(_textEditingController.text);
+      widget.goToNextPage();
     }
   }
 
@@ -132,7 +145,7 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
                 DSButton(
                   title: translate.input,
                   letter: "A",
-                  callback: widget.goToNextPage,
+                  callback: _onContinue,
                 ),
               ],
             ),

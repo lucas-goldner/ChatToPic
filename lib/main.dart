@@ -9,15 +9,19 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 class Main extends StatelessWidget {
   const Main({Key? key}) : super(key: key);
 
+  SharedPrefCubit getSharedPrefsCubit() {
+    final sharedPrefCubit = SharedPrefCubit(SharedPrefProvider());
+    sharedPrefCubit.loadSharedPrefs();
+
+    return sharedPrefCubit;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final sharedPreferencesProvider = SharedPrefProvider()..loadSharedPrefs();
-    final sharedPrefCubit = SharedPrefCubit(sharedPreferencesProvider);
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<SharedPrefCubit>(
-          create: (context) => sharedPrefCubit,
+          create: (context) => getSharedPrefsCubit(),
         ),
       ],
       child: MaterialApp(

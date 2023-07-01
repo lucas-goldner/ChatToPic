@@ -3,7 +3,8 @@
   "chooseColor": "Wähle Farbe",
   "erase": "Löschen",
   "input": "Eingeben",
-  "username": "Username",
+  "username": "Nutzername",
   "goBack": "Zurück",
-  "select": "Auswählen"
+  "select": "Auswählen",
+  "pleaseEnterName": "Bitte gebe einen Nutzernamen ein"
 }

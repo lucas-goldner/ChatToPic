@@ -5,5 +5,6 @@
   "input": "Inserir",
   "username": "Nome",
   "goBack": "Voltar",
-  "select": "Selecionar"
+  "select": "Selecionar",
+  "pleaseEnterName": "Insera um nome por favor"
 }

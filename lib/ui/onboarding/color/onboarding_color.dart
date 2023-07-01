@@ -16,8 +16,8 @@ class OnboardingColor extends StatefulWidget {
 }
 
 class _OnboardingColorState extends State<OnboardingColor> {
-  void selectColor(favColor) =>
-      context.read<SharedPrefCubit>().setFavoriteColor(favColor);
+  Future<void> selectColor(favColor) async =>
+      await context.read<SharedPrefCubit>().setFavoriteColor(favColor);
 
   @override
   Widget build(BuildContext context) {
