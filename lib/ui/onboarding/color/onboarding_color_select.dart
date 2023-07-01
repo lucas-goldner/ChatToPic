@@ -12,61 +12,60 @@ class OnboardingColorSelect extends StatelessWidget {
   const OnboardingColorSelect({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: ChatToPicColorSelectConstants.selectedColorHeight,
-          width: ChatToPicColorSelectConstants.selectedColorWidth,
-          margin: const EdgeInsets.only(top: 24),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            border: Border.fromBorderSide(
-              BorderSide(
-                color: ChatToPicColors.colorsContainer,
-                width: 2.0,
+  Widget build(BuildContext context) => Stack(
+        children: [
+          Container(
+            height: ChatToPicColorSelectConstants.selectedColorHeight,
+            width: ChatToPicColorSelectConstants.selectedColorWidth,
+            margin: const EdgeInsets.only(top: 24),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border.fromBorderSide(
+                BorderSide(
+                  color: ChatToPicColors.colorsContainer,
+                  width: 2.0,
+                ),
+              ),
+            ),
+            child: Center(
+              child:
+                  BlocSelector<SharedPrefCubit, SharedPrefState, FavoriteColor>(
+                selector: (state) => state.favoriteColor,
+                builder: (context, favColor) => Container(
+                  color: favColor.getColor(),
+                  width: ChatToPicColorSelectConstants.selectedColorSize,
+                  height: ChatToPicColorSelectConstants.selectedColorSize,
+                ),
               ),
             ),
           ),
-          child: Center(
-            child:
-                BlocSelector<SharedPrefCubit, SharedPrefState, FavoriteColor>(
-              selector: (state) => state.favoriteColor,
-              builder: (context, favColor) => Container(
-                color: favColor.getColor(),
-                width: ChatToPicColorSelectConstants.selectedColorSize,
-                height: ChatToPicColorSelectConstants.selectedColorSize,
+          Container(
+            height: ChatToPicColorSelectConstants
+                .selectedColorContainerBannerHeight,
+            width: ChatToPicColorSelectConstants.selectedColorContainerWidth,
+            margin: const EdgeInsets.only(top: 24),
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: ChatToPicColors.colorsContainerSecondBorder,
+                  width: 2.0,
+                ),
+                right: BorderSide(
+                  color: ChatToPicColors.colorsContainerSecondBorder,
+                  width: 2.0,
+                ),
               ),
             ),
-          ),
-        ),
-        Container(
-          height:
-              ChatToPicColorSelectConstants.selectedColorContainerBannerHeight,
-          width: ChatToPicColorSelectConstants.selectedColorContainerWidth,
-          margin: const EdgeInsets.only(top: 24),
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: ChatToPicColors.colorsContainerSecondBorder,
-                width: 2.0,
+            child: CustomPaint(
+              size: const Size(
+                ChatToPicColorSelectConstants.selectedColorContainerWidth,
+                ChatToPicColorSelectConstants
+                    .selectedColorContainerBannerHeight,
               ),
-              right: BorderSide(
-                color: ChatToPicColors.colorsContainerSecondBorder,
-                width: 2.0,
-              ),
+              painter: DSDefaultBackgroundColorPainter(),
+              child: Center(child: Text(S.of(context).chooseColor)),
             ),
           ),
-          child: CustomPaint(
-            size: const Size(
-              ChatToPicColorSelectConstants.selectedColorContainerWidth,
-              ChatToPicColorSelectConstants.selectedColorContainerBannerHeight,
-            ),
-            painter: DSDefaultBackgroundColorPainter(),
-            child: Center(child: Text(S.of(context).chooseColor)),
-          ),
-        ),
-      ],
-    );
-  }
+        ],
+      );
 }
