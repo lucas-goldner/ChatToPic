@@ -6,10 +6,10 @@ abstract class SharedPrefProviderInterface {
     SharedPrefKey sharedPrefKey,
     String value,
   );
-  String getStringSharedPref(SharedPrefKey sharedPrefKey);
+  String? getStringSharedPref(SharedPrefKey sharedPrefKey);
   Future<void> setBoolInSharedPrefs(
     SharedPrefKey sharedPrefKey,
     bool value,
   );
-  bool getBoolSharedPref(SharedPrefKey sharedPrefKey);
+  bool? getBoolSharedPref(SharedPrefKey sharedPrefKey);
 }

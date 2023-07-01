@@ -8,20 +8,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SharedPrefCubit extends Cubit<SharedPrefState> {
   final SharedPrefProvider _sharedPrefProvider;
 
-  SharedPrefCubit(this._sharedPrefProvider) : super(const SharedPrefInitial());
+  SharedPrefCubit(this._sharedPrefProvider) : super(const SharedPrefState());
 
   Future<void> loadSharedPrefs() async {
     await _sharedPrefProvider.loadSharedPrefs();
 
-    final FavoriteColor favColor = _sharedPrefProvider
-        .getStringSharedPref(SharedPrefKey.favColor)
-        .getFavoriteColorFromString();
+    final String? favColorString =
+        _sharedPrefProvider.getStringSharedPref(SharedPrefKey.favColor);
+    FavoriteColor favoriteColor = FavoriteColor.grey;
 
-    emit(SharedPrefLoaded(
+    if (favColorString != null) {
+      favoriteColor = favColorString.getFavoriteColorFromString();
+    }
+
+    emit(SharedPrefState(
       onboardingDone:
-          _sharedPrefProvider.getBoolSharedPref(SharedPrefKey.onboardingDone),
-      username: _sharedPrefProvider.getStringSharedPref(SharedPrefKey.username),
-      favoriteColor: favColor,
+          _sharedPrefProvider.getBoolSharedPref(SharedPrefKey.onboardingDone) ??
+              false,
+      username:
+          _sharedPrefProvider.getStringSharedPref(SharedPrefKey.username) ?? "",
+      favoriteColor: favoriteColor,
     ));
   }
 

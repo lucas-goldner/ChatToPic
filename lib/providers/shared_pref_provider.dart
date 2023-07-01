@@ -13,11 +13,11 @@ class SharedPrefProvider implements SharedPrefProviderInterface {
   }
 
   @override
-  String getStringSharedPref(SharedPrefKey sharedPrefKey) =>
+  String? getStringSharedPref(SharedPrefKey sharedPrefKey) =>
       prefs?.getString(sharedPrefKey.key) ?? "";
 
   @override
-  bool getBoolSharedPref(SharedPrefKey sharedPrefKey) =>
+  bool? getBoolSharedPref(SharedPrefKey sharedPrefKey) =>
       prefs?.getBool(sharedPrefKey.key) ?? false;
 
   @override
