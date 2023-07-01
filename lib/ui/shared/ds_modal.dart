@@ -1,7 +1,7 @@
-import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
-import 'package:chattopic/ui/constants/chat_to_pic_text_styles.dart';
-import 'package:chattopic/ui/constants/ds_modal_constants.dart';
-import 'package:chattopic/ui/painters/ds_modal_background_painter.dart';
+import 'package:chattopic/ui/style/constants/chat_to_pic_colors.dart';
+import 'package:chattopic/ui/style/constants/chat_to_pic_text_styles.dart';
+import 'package:chattopic/ui/style/constants/ds_modal_constants.dart';
+import 'package:chattopic/ui/style/painters/ds_modal_background_painter.dart';
 import 'package:chattopic/ui/shared/pixel_border.dart';
 import 'package:flutter/material.dart';
 

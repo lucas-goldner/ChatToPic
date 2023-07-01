@@ -9,10 +9,6 @@ class SharedPrefCubit extends Cubit<SharedPrefState> {
 
   SharedPrefCubit(this.sharedPrefProvider) : super(const SharedPrefInitial());
 
-  void getFavoriteColor() {
-    print(sharedPrefProvider.getSharedPref(SharedPrefKey.favColor));
-  }
-
   void setFavoriteColor(FavoriteColor color) {
     sharedPrefProvider.setStringInSharedPrefs(
       SharedPrefKey.favColor,

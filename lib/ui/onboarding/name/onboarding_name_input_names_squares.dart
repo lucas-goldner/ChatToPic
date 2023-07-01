@@ -1,4 +1,4 @@
-import 'package:chattopic/ui/constants/ds_name_input_constants.dart';
+import 'package:chattopic/ui/style/constants/ds_name_input_constants.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingNameInputNamesSquares extends StatelessWidget {

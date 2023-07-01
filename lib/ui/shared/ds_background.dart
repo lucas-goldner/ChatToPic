@@ -1,4 +1,4 @@
-import 'package:chattopic/ui/painters/ds_background_painter.dart';
+import 'package:chattopic/ui/style/painters/ds_background_painter.dart';
 import 'package:flutter/material.dart';
 
 class DSBackground extends StatelessWidget {

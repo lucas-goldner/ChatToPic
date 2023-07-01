@@ -1,7 +1,7 @@
 import 'package:chattopic/helper/canvas_args.dart';
 import 'package:chattopic/helper/extensions/color_extension.dart';
-import 'package:chattopic/ui/constants/ds_default_background_constants.dart';
-import 'package:chattopic/ui/painters/common_painters.dart';
+import 'package:chattopic/ui/style/constants/ds_default_background_constants.dart';
+import 'package:chattopic/ui/style/painters/common_painters.dart';
 import 'package:flutter/material.dart';
 
 class DSDefaultBackgroundColorPainter extends CustomPainter {

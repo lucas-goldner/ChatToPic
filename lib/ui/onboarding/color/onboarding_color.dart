@@ -1,8 +1,8 @@
 import 'package:chattopic/cubits/shared_pref/shared_pref_cubit.dart';
 import 'package:chattopic/cubits/shared_pref/shared_pref_state.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
-import 'package:chattopic/ui/constants/chat_to_pic_color_select_constants.dart';
-import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
+import 'package:chattopic/ui/style/constants/chat_to_pic_color_select_constants.dart';
+import 'package:chattopic/ui/style/constants/chat_to_pic_colors.dart';
 import 'package:chattopic/ui/onboarding/color/onboarding_color_select.dart';
 import 'package:chattopic/ui/shared/dashed_border.dart';
 import 'package:flutter/material.dart';
@@ -73,9 +73,9 @@ class _OnboardingColorState extends State<OnboardingColor> {
                       physics: const NeverScrollableScrollPhysics(),
                       children: FavoriteColor.values.map(
                         (favColor) {
-                          Color color = favColor.getColor();
+                          Color color = favColor.color;
 
-                          return state.favoriteColor.getColor() == color
+                          return state.favoriteColor.color == color
                               ? GestureDetector(
                                   onTap: () => selectColor(favColor),
                                   child: DashedBorder(

@@ -1,5 +1,5 @@
 import 'package:chattopic/helper/canvas_args.dart';
-import 'package:chattopic/ui/painters/common_painters.dart';
+import 'package:chattopic/ui/style/painters/common_painters.dart';
 import 'package:flutter/material.dart';
 
 class DSButtonPainter extends CustomPainter {

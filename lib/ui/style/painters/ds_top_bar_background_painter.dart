@@ -1,19 +1,19 @@
 import 'package:chattopic/helper/canvas_args.dart';
 import 'package:chattopic/helper/extensions/color_extension.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
-import 'package:chattopic/ui/constants/ds_bar_constants.dart';
-import 'package:chattopic/ui/painters/common_painters.dart';
+import 'package:chattopic/ui/style/constants/ds_bar_constants.dart';
+import 'package:chattopic/ui/style/painters/common_painters.dart';
 import 'package:flutter/material.dart';
 
 class DSTopBarBackgroundPainter extends CustomPainter {
-  final FavoriteColor color;
-  DSTopBarBackgroundPainter(this.color);
+  final FavoriteColor favColor;
+  DSTopBarBackgroundPainter(this.favColor);
 
   @override
   void paint(Canvas canvas, Size size) {
     final Commonpainters commonpainters = Commonpainters();
     final paint = Paint()
-      ..color = color.getColor()
+      ..color = favColor.color
       // Strokewidth = 1 causes the underlying canvas layer to blend with this one.
       ..strokeWidth = 2;
     final CanvasArgs canvasArgs = CanvasArgs(canvas, size, paint);
@@ -25,27 +25,27 @@ class DSTopBarBackgroundPainter extends CustomPainter {
           intIndex == DSBarConstants.sections[2].stop) {
         commonpainters.pixelizedRow(
           canvasArgs,
-          color.getColor().lighten(
-                intIndex == 0
-                    ? DSBarConstants.sections.first.lightenValue
-                    : DSBarConstants.sections[1].lightenValue,
-              ),
-          color.getColor().lighten(
-                intIndex == 0
-                    ? DSBarConstants.sections[1].lightenValue
-                    : DSBarConstants.sections[2].lightenValue,
-              ),
+          favColor.color.lighten(
+            intIndex == 0
+                ? DSBarConstants.sections.first.lightenValue
+                : DSBarConstants.sections[1].lightenValue,
+          ),
+          favColor.color.lighten(
+            intIndex == 0
+                ? DSBarConstants.sections[1].lightenValue
+                : DSBarConstants.sections[2].lightenValue,
+          ),
           intIndex.toDouble(),
         );
       } else if (intIndex == DSBarConstants.sections[5].stop) {
         commonpainters.pixelizedTripleRow(
           canvasArgs,
-          color.getColor().lighten(DSBarConstants.sections[4].lightenValue),
-          color.getColor().lighten(DSBarConstants.sections[5].lightenValue),
+          favColor.color.lighten(DSBarConstants.sections[4].lightenValue),
+          favColor.color.lighten(DSBarConstants.sections[5].lightenValue),
           intIndex.toDouble(),
         );
       } else {
-        _paintBarTopRow(index, color.getColor(), canvasArgs);
+        _paintBarTopRow(index, favColor.color, canvasArgs);
       }
     }
 

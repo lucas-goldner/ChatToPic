@@ -1,4 +1,4 @@
-import 'package:chattopic/ui/painters/dashed_border_painter.dart';
+import 'package:chattopic/ui/style/painters/dashed_border_painter.dart';
 import 'package:flutter/material.dart';
 
 const _half = 2;

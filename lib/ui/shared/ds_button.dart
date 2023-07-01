@@ -1,5 +1,5 @@
-import 'package:chattopic/ui/constants/chat_to_pic_text_styles.dart';
-import 'package:chattopic/ui/painters/ds_button_painter.dart';
+import 'package:chattopic/ui/style/constants/chat_to_pic_text_styles.dart';
+import 'package:chattopic/ui/style/painters/ds_button_painter.dart';
 import 'package:flutter/material.dart';
 
 class DSButton extends StatelessWidget {
