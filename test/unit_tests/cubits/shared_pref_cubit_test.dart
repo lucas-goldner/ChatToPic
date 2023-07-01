@@ -7,13 +7,16 @@ import 'package:chattopic/providers/shared_pref_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../mocks/data/mock_shared_pref_data.dart';
 import '../../mocks/mock_provider/sharedpref_provider_mock.dart';
 
 void main() {
   late SharedPrefProvider sharedPrefProvider;
   late SharedPrefCubit sharedPrefCubit;
+  late MockSharedPrefData mockSharedPrefData;
 
   setUp(() {
+    mockSharedPrefData = MockSharedPrefData();
     sharedPrefProvider = MockSharedPrefProvider();
     sharedPrefCubit = SharedPrefCubit(sharedPrefProvider);
     when(() => sharedPrefProvider.loadSharedPrefs())
@@ -40,18 +43,21 @@ void main() {
         build: () {
           when(() => sharedPrefProvider.getBoolSharedPref(
               SharedPrefKey.onboardingDone)).thenAnswer((_) => true);
-          when(() => sharedPrefProvider.getStringSharedPref(
-              SharedPrefKey.username)).thenAnswer((_) => "LucasG");
-          when(() => sharedPrefProvider.getStringSharedPref(
-              SharedPrefKey.favColor)).thenAnswer((_) => "Color(0xff8a00d3)");
+          when(() => sharedPrefProvider
+                  .getStringSharedPref(SharedPrefKey.username))
+              .thenAnswer((_) => mockSharedPrefData.getBasicData().username);
+          when(() => sharedPrefProvider
+                  .getStringSharedPref(SharedPrefKey.favColor))
+              .thenAnswer(
+                  (_) => mockSharedPrefData.getBasicData().favoriteColor);
           return sharedPrefCubit;
         },
         act: (cubit) => cubit.loadSharedPrefs(),
         expect: () => [
-          const SharedPrefState(
+          SharedPrefState(
             favoriteColor: FavoriteColor.purple,
             onboardingDone: true,
-            username: "LucasG",
+            username: mockSharedPrefData.getBasicData().username,
           ),
         ],
       );
@@ -116,7 +122,8 @@ void main() {
         'test setUsername to LucasG',
         build: () {
           when(() => sharedPrefProvider.setStringInSharedPrefs(
-                  SharedPrefKey.username, "LucasG"))
+                  SharedPrefKey.username,
+                  mockSharedPrefData.getBasicData().username))
               .thenAnswer((_) => Future.value());
           return sharedPrefCubit;
         },
@@ -129,10 +136,10 @@ void main() {
             onboardingDone: false,
             username: "",
           ),
-          const SharedPrefState(
+          SharedPrefState(
             favoriteColor: FavoriteColor.grey,
             onboardingDone: false,
-            username: "LucasG",
+            username: mockSharedPrefData.getBasicData().username,
           ),
         ],
       );
