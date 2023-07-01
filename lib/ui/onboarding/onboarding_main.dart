@@ -1,5 +1,4 @@
 import 'package:chattopic/generated/l10n.dart';
-import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/ui/onboarding/onboarding_item.dart';
 import 'package:chattopic/ui/shared/ds_background.dart';
 import 'package:chattopic/ui/shared/ds_bars.dart';
@@ -29,7 +28,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
       child: Stack(
         children: [
           const DSBackground(),
-          const DSBars(FavoriteColor.grey),
+          const DSBars(),
           Center(
             child: OnboardingItem(index, goToNextPage),
           ),
