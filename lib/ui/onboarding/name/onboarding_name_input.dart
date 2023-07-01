@@ -45,7 +45,7 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
 
   @override
   Widget build(BuildContext context) {
-    final t = S.of(context);
+    final translate = S.of(context);
 
     return Stack(
       children: [
@@ -99,7 +99,7 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
                             color: Colors.white,
                             letterSpacing: DSNameInputConstants.letterSpacing,
                           ),
-                          hintText: t.username,
+                          hintText: translate.username,
                         ),
                         style: ChatToPicTextStyles().getDefaultTextStyle(
                           fontsize: fontSize14,
@@ -122,7 +122,7 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DSButton(
-                  title: t.erase,
+                  title: translate.erase,
                   letter: "B",
                   callback: _deleteLastLetter,
                 ),
@@ -130,7 +130,7 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
                   width: 40,
                 ),
                 DSButton(
-                  title: t.input,
+                  title: translate.input,
                   letter: "A",
                   callback: widget.goToNextPage,
                 ),

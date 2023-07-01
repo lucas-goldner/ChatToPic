@@ -1,11 +1,13 @@
 import 'package:chattopic/helper/canvas_args.dart';
 import 'package:chattopic/helper/extensions/color_extension.dart';
 import 'package:chattopic/ui/constants/ds_default_background_constants.dart';
+import 'package:chattopic/ui/painters/common_painters.dart';
 import 'package:flutter/material.dart';
 
 class DSDefaultBackgroundColorPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
+    final Commonpainters commonpainters = Commonpainters();
     final paint = Paint()
       ..color = Colors.grey
       ..strokeWidth = 2;
@@ -19,7 +21,7 @@ class DSDefaultBackgroundColorPainter extends CustomPainter {
 
       if (intIndex == DSDefaultBackgroundConstants.sections[7].stop ||
           intIndex == DSDefaultBackgroundConstants.sections.last.stop) {
-        _pixelizedRow(
+        commonpainters.pixelizedRow(
           canvasArgs,
           Colors.grey.lighten(
             intIndex == indexAtPixelRow
@@ -34,7 +36,7 @@ class DSDefaultBackgroundColorPainter extends CustomPainter {
           intIndex.toDouble(),
         );
       } else if (intIndex == DSDefaultBackgroundConstants.sections[4].stop) {
-        _pixelizedRow(
+        commonpainters.pixelizedRow(
           canvasArgs,
           Colors.grey.lighten(
             intIndex == indexAtPixelRow
@@ -49,7 +51,7 @@ class DSDefaultBackgroundColorPainter extends CustomPainter {
           intIndex.toDouble(),
         );
       } else {
-        _paintRow(
+        _paintBackgroundRow(
           index,
           Colors.grey
               .lighten(DSDefaultBackgroundConstants.sections[1].lightenValue),
@@ -62,7 +64,7 @@ class DSDefaultBackgroundColorPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 
-  void _paintRow(
+  void _paintBackgroundRow(
     double index,
     Color color,
     CanvasArgs canvasArgs,
@@ -101,68 +103,5 @@ class DSDefaultBackgroundColorPainter extends CustomPainter {
       );
       canvasArgs.canvas.drawLine(postion1, postion2, canvasArgs.paint);
     }
-  }
-
-  void _drawRect(Offset startPoint, Offset endPoint, CanvasArgs canvasArgs) {
-    Rect rect = Rect.fromPoints(startPoint, endPoint);
-    canvasArgs.canvas.drawRect(
-      rect,
-      canvasArgs.paint,
-    );
-  }
-
-  void _pixelizedRow(
-    CanvasArgs canvasArgs,
-    Color color,
-    Color lightenedColor,
-    double yOffset,
-  ) {
-    double dashWidth = 4;
-    double dashSpace = 4;
-    double startX = 2;
-    double startX2 = 6;
-    Paint paint = canvasArgs.paint;
-    final canvasWidth = canvasArgs.size.width;
-    final width = canvasWidth - 6;
-
-    // Draw squares X and Y ordered like
-    // X Y
-    // Y X
-    while (startX < width) {
-      paint.color = color;
-      final startPoint = Offset(startX, yOffset);
-      final endPoint = Offset(startX + dashWidth, dashWidth + yOffset);
-      _drawRect(startPoint, endPoint, canvasArgs);
-
-      final startPoint2 = Offset(startX2, yOffset + dashWidth);
-      final endPoint2 =
-          Offset(startX2 + dashWidth, dashWidth + dashWidth + yOffset);
-      _drawRect(startPoint2, endPoint2, canvasArgs);
-
-      paint.color = lightenedColor;
-      final startPoint3 = Offset(startX2, yOffset);
-      final endPoint3 = Offset(startX2 + dashWidth, dashWidth + yOffset);
-      _drawRect(startPoint3, endPoint3, canvasArgs);
-
-      final startPoint4 = Offset(startX, dashWidth + yOffset);
-      final endPoint4 =
-          Offset(startX + dashWidth, dashWidth + dashWidth + yOffset);
-      _drawRect(startPoint4, endPoint4, canvasArgs);
-
-      startX += dashWidth + dashSpace;
-      startX2 += dashWidth + dashSpace;
-    }
-
-    // Print final pixel row since a piece is missing when width is reduced by 6.
-    paint.color = color;
-    final finalStartPoint = Offset(startX, yOffset);
-    final finalEndPoint = Offset(startX + dashWidth, dashWidth + yOffset);
-    _drawRect(finalStartPoint, finalEndPoint, canvasArgs);
-
-    paint.color = lightenedColor;
-    final finalStartPoint2 = Offset(startX, dashWidth + yOffset);
-    final finalEndPoint2 =
-        Offset(startX + dashWidth, dashWidth + dashWidth + yOffset);
-    _drawRect(finalStartPoint2, finalEndPoint2, canvasArgs);
   }
 }

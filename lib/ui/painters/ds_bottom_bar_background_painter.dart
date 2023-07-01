@@ -4,12 +4,15 @@ import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/ui/constants/ds_bar_constants.dart';
 import 'package:flutter/material.dart';
 
+import 'common_painters.dart';
+
 class DSBottomBarBackgroundPainter extends CustomPainter {
   final FavoriteColor color;
   DSBottomBarBackgroundPainter(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
+    final Commonpainters commonpainters = Commonpainters();
     final paint = Paint()
       ..color = color.getColor()
       // Strokewidth = 1 causes the underlying canvas layer to blend with this one.
@@ -31,7 +34,7 @@ class DSBottomBarBackgroundPainter extends CustomPainter {
 
       if (intIndex == DSBarConstants.reversedSections[7].stop ||
           intIndex == DSBarConstants.reversedSections.last.stop) {
-        _pixelizedRow(
+        commonpainters.pixelizedRow(
           canvasArgs,
           color.getColor().lighten(
                 intIndex == indexAtPixelRow
@@ -57,7 +60,7 @@ class DSBottomBarBackgroundPainter extends CustomPainter {
           intIndex.toDouble(),
         );
       } else {
-        _paintRow(index, color.getColor(), canvasArgs);
+        _paintBottomRow(index, color.getColor(), canvasArgs);
       }
     }
   }
@@ -65,7 +68,7 @@ class DSBottomBarBackgroundPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 
-  void _paintRow(
+  void _paintBottomRow(
     double index,
     Color color,
     CanvasArgs canvasArgs,
@@ -108,47 +111,6 @@ class DSBottomBarBackgroundPainter extends CustomPainter {
       rect,
       canvasArgs.paint,
     );
-  }
-
-  void _pixelizedRow(
-    CanvasArgs canvasArgs,
-    Color color,
-    Color lightenedColor,
-    double yOffset,
-  ) {
-    double dashWidth = 4;
-    double dashSpace = 4;
-    double startX = 0;
-    double startX2 = 4;
-    Paint paint = canvasArgs.paint;
-
-    // Draw squares X and Y ordered like
-    // X Y
-    // Y X
-    while (startX < canvasArgs.size.width) {
-      paint.color = color;
-      final startPoint = Offset(startX, yOffset);
-      final endPoint = Offset(startX + dashWidth, dashWidth + yOffset);
-      _drawRect(startPoint, endPoint, canvasArgs);
-
-      final startPoint2 = Offset(startX2, yOffset + dashWidth);
-      final endPoint2 =
-          Offset(startX2 + dashWidth, dashWidth + dashWidth + yOffset);
-      _drawRect(startPoint2, endPoint2, canvasArgs);
-
-      paint.color = lightenedColor;
-      final startPoint3 = Offset(startX2, yOffset);
-      final endPoint3 = Offset(startX2 + dashWidth, dashWidth + yOffset);
-      _drawRect(startPoint3, endPoint3, canvasArgs);
-
-      final startPoint4 = Offset(startX, dashWidth + yOffset);
-      final endPoint4 =
-          Offset(startX + dashWidth, dashWidth + dashWidth + yOffset);
-      _drawRect(startPoint4, endPoint4, canvasArgs);
-
-      startX += dashWidth + dashSpace;
-      startX2 += dashWidth + dashSpace;
-    }
   }
 
   void _pixelizedTripleRow(
