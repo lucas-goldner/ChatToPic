@@ -1,8 +1,12 @@
+import 'package:chattopic/cubits/shared_pref/shared_pref_cubit.dart';
+import 'package:chattopic/cubits/shared_pref/shared_pref_state.dart';
 import 'package:chattopic/generated/l10n.dart';
+import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/ui/constants/chat_to_pic_color_select_constants.dart';
 import 'package:chattopic/ui/constants/chat_to_pic_colors.dart';
 import 'package:chattopic/ui/painters/ds_default_background_color_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnboardingColorSelect extends StatelessWidget {
   const OnboardingColorSelect({Key? key}) : super(key: key);
@@ -25,10 +29,14 @@ class OnboardingColorSelect extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: Container(
-              color: Colors.red,
-              width: ChatToPicColorSelectConstants.selectedColorSize,
-              height: ChatToPicColorSelectConstants.selectedColorSize,
+            child:
+                BlocSelector<SharedPrefCubit, SharedPrefState, FavoriteColor>(
+              selector: (state) => state.favoriteColor,
+              builder: (context, favColor) => Container(
+                color: favColor.getColor(),
+                width: ChatToPicColorSelectConstants.selectedColorSize,
+                height: ChatToPicColorSelectConstants.selectedColorSize,
+              ),
             ),
           ),
         ),
