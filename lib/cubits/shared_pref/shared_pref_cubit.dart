@@ -1,4 +1,5 @@
 import 'package:chattopic/cubits/shared_pref/shared_pref_state.dart';
+import 'package:chattopic/helper/extensions/string_extension.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/model/enum/shared_pref_key.dart';
 import 'package:chattopic/providers/shared_pref_provider.dart';
@@ -11,16 +12,16 @@ class SharedPrefCubit extends Cubit<SharedPrefState> {
 
   Future<void> loadSharedPrefs() async {
     await _sharedPrefProvider.loadSharedPrefs();
-    print(_sharedPrefProvider.getBoolSharedPref(SharedPrefKey.onboardingDone));
-    print(_sharedPrefProvider.getStringSharedPref(SharedPrefKey.username));
-    print(_sharedPrefProvider.getStringSharedPref(SharedPrefKey.favColor));
+
+    final FavoriteColor favColor = _sharedPrefProvider
+        .getStringSharedPref(SharedPrefKey.favColor)
+        .getFavoriteColorFromString();
 
     emit(SharedPrefLoaded(
       onboardingDone:
           _sharedPrefProvider.getBoolSharedPref(SharedPrefKey.onboardingDone),
       username: _sharedPrefProvider.getStringSharedPref(SharedPrefKey.username),
-      // favoriteColor:
-      //     _sharedPrefProvider.getStringSharedPref(SharedPrefKey.favColor),
+      favoriteColor: favColor,
     ));
   }
 

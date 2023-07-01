@@ -6,5 +6,7 @@
   "username": "Nutzername",
   "goBack": "Zurück",
   "select": "Auswählen",
-  "pleaseEnterName": "Bitte gebe einen Nutzernamen ein"
+  "pleaseEnterName": "Bitte gebe einen Nutzernamen ein",
+  "settings": "Einstellungen",
+  "join": "Beitreten"
 }

@@ -17,7 +17,7 @@ enum FavoriteColor {
   darkBlue(ChatToPicColors.dsDarkBlueColor),
   purple(ChatToPicColors.dsPurpleColor),
   lightPurple(ChatToPicColors.dsLightPurpleColor),
-  pinkColor(ChatToPicColors.dsPinkColor);
+  pink(ChatToPicColors.dsPinkColor);
 
   const FavoriteColor(this.color);
   final Color color;
