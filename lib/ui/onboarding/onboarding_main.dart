@@ -1,11 +1,9 @@
 import 'package:chattopic/generated/l10n.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
-import 'package:chattopic/ui/onboarding/color/onboarding_color.dart';
-import 'package:chattopic/ui/onboarding/name/onboarding_name_input.dart';
+import 'package:chattopic/ui/onboarding/onboarding_item.dart';
 import 'package:chattopic/ui/shared/ds_background.dart';
 import 'package:chattopic/ui/shared/ds_bars.dart';
 import 'package:chattopic/ui/shared/ds_button.dart';
-import 'package:chattopic/ui/shared/ds_modal.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingMain extends StatefulWidget {
@@ -24,19 +22,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
 
   @override
   Widget build(BuildContext context) {
-    Widget currentWidget = const SizedBox.shrink();
-
-    switch (index) {
-      case 0:
-        currentWidget = DSModal(S.of(context).beforeYouBegin);
-        break;
-      case 1:
-        currentWidget = OnboardingNameInput(goToNextPage);
-        break;
-      case 2:
-        currentWidget = const OnboardingColor();
-        break;
-    }
+    final translate = S.of(context);
 
     return GestureDetector(
       onTap: () => index == 0 ? goToNextPage() : null,
@@ -45,7 +31,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
           const DSBackground(),
           const DSBars(FavoriteColor.grey),
           Center(
-            child: currentWidget,
+            child: OnboardingItem(index, goToNextPage),
           ),
           Visibility(
             visible: index == 2,
@@ -56,7 +42,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     DSButton(
-                      title: S.of(context).goBack,
+                      title: translate.goBack,
                       letter: "B",
                       callback: () => setState(() => index -= 1),
                       optionalButtonXOffset: 20,
@@ -65,9 +51,9 @@ class _OnboardingMainState extends State<OnboardingMain> {
                       width: 40,
                     ),
                     DSButton(
-                      title: S.of(context).select,
+                      title: translate.select,
                       letter: "A",
-                      optionalButtonXOffset: 32,
+                      optionalButtonXOffset: 28,
                     ),
                   ],
                 ),

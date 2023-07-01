@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ChatToPic (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "Flutter Chrome: Run Dev Flavor",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/flavours/main_dev.dart",
+      "args": ["run", "--flavor", "dev", "-d", "chrome"]
+    },
+    {
+      "name": "Flutter Chrome: Run Prod Flavor",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/flavours/main_prod.dart",
+      "args": ["run", "--flavor", "prod", "-d", "chrome"]
+    },
+    {
+      "name": "Flutter iOS: Run Dev Flavor",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/flavours/main_dev.dart",
+      "args": ["run", "--flavor", "dev", "-d", "00008120-001A2DE01E80C01E"]
+    },
+    {
+      "name": "Flutter iOS: Run Prod Flavor",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/flavours/main_prod.dart",
+      "args": ["run", "--flavor", "prod", "-d", "00008120-001A2DE01E80C01E"]
+    }
+  ]
+}

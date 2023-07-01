@@ -88,8 +88,8 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
                 child: Padding(
                   padding: const EdgeInsets.all(2),
                   child: SizedBox(
-                    height: DSNameInputConstants.smallestHeight,
-                    width: DSNameInputConstants.smallestWidth + 2,
+                    height: DSNameInputConstants.containerHeight,
+                    width: DSNameInputConstants.innerContainerWidth,
                     child: Center(
                       child: TextField(
                         controller: _textEditingController,
@@ -99,7 +99,7 @@ class _OnboardingNameInputState extends State<OnboardingNameInput> {
                             color: Colors.white,
                             letterSpacing: DSNameInputConstants.letterSpacing,
                           ),
-                          hintText: S.of(context).username,
+                          hintText: t.username,
                         ),
                         style: ChatToPicTextStyles().getDefaultTextStyle(
                           fontsize: fontSize14,

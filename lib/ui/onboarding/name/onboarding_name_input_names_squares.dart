@@ -22,8 +22,9 @@ class OnboardingNameInputNamesSquares extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.fromBorderSide(
                   BorderSide(
-                    color: Colors.grey.withAlpha(72),
-                    width: 2.0,
+                    color:
+                        Colors.grey.withAlpha(DSNameInputConstants.borderAlpha),
+                    width: DSNameInputConstants.borderWidth,
                   ),
                 ),
               ),
