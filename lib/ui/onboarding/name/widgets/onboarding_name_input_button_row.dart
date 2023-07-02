@@ -22,6 +22,7 @@ class OnboardingNameInputButtonRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             DSButton(
+              key: const Key("OnboardingNameInputEraseButton"),
               title: translate.erase,
               letter: "B",
               callback: onErase,
@@ -30,6 +31,7 @@ class OnboardingNameInputButtonRow extends StatelessWidget {
               width: 40,
             ),
             DSButton(
+              key: const Key("OnboardingNameInputContinueButton"),
               title: translate.input,
               letter: "A",
               callback: onContinue,
