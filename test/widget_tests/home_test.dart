@@ -7,6 +7,6 @@ void main() {
   testWidgets('Test renders mainapp', (WidgetTester tester) async {
     await tester.pumpWidget(const Main());
 
-    expect(find.byKey(const Key('Home')), findsNothing);
+    expect(find.byKey(const Key('MainApp')), findsOneWidget);
   });
 }

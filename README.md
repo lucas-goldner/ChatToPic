@@ -24,6 +24,17 @@ $ flutter run --flavor prod -t lib/flavours/main_prod.dart
 
 ```
 
+Run tests:
+
+```
+# Run tests
+$ flutter test
+
+# Run tests with coverage (Optional: Install https://pub.dev/packages/remove_from_coverage)
+$ flutter test --coverage
+$ remove_from_coverage -f coverage/lcov.info -r 'generated/.+\.dart$'
+```
+
 ## Deployment
 
 ```

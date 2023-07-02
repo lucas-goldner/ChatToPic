@@ -39,14 +39,24 @@ void main() {
     });
 
     group("Test getStringSharedPref", () {
+      test("test getStringSharedPref prefs null", () async {
+        final Map<String, Object> values = <String, Object>{};
+        SharedPreferences.setMockInitialValues(values);
+
+        expect(
+          sharedPrefProvider.getStringSharedPref(SharedPrefKey.favColor),
+          "",
+        );
+      });
+
       test("test getStringSharedPref empty values", () async {
         final Map<String, Object> values = <String, Object>{};
         SharedPreferences.setMockInitialValues(values);
         await sharedPrefProvider.loadSharedPrefs();
 
         expect(
-          sharedPrefProvider.prefs?.getString(SharedPrefKey.favColor.key),
-          null,
+          sharedPrefProvider.getStringSharedPref(SharedPrefKey.favColor),
+          "",
         );
       });
 
@@ -59,7 +69,7 @@ void main() {
         await sharedPrefProvider.loadSharedPrefs();
 
         expect(
-          sharedPrefProvider.prefs?.getString(SharedPrefKey.favColor.key),
+          sharedPrefProvider.getStringSharedPref(SharedPrefKey.favColor),
           data.favoriteColor,
         );
       });
@@ -110,14 +120,24 @@ void main() {
     });
 
     group("Test getBoolSharedPref", () {
+      test("test getBoolSharedPref prefs null", () async {
+        final Map<String, Object> values = <String, Object>{};
+        SharedPreferences.setMockInitialValues(values);
+
+        expect(
+          sharedPrefProvider.getBoolSharedPref(SharedPrefKey.onboardingDone),
+          false,
+        );
+      });
+
       test("test getBoolSharedPref empty values", () async {
         final Map<String, Object> values = <String, Object>{};
         SharedPreferences.setMockInitialValues(values);
         await sharedPrefProvider.loadSharedPrefs();
 
         expect(
-          sharedPrefProvider.prefs?.getBool(SharedPrefKey.onboardingDone.key),
-          null,
+          sharedPrefProvider.getBoolSharedPref(SharedPrefKey.onboardingDone),
+          false,
         );
       });
 
@@ -130,7 +150,7 @@ void main() {
         await sharedPrefProvider.loadSharedPrefs();
 
         expect(
-          sharedPrefProvider.prefs?.getBool(SharedPrefKey.onboardingDone.key),
+          sharedPrefProvider.getBoolSharedPref(SharedPrefKey.onboardingDone),
           data.onboardingDone,
         );
       });
