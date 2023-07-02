@@ -59,7 +59,7 @@ class DSTopBarBackgroundPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 
   void _paintBarTopRow(
     double index,

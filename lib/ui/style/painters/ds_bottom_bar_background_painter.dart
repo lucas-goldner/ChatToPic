@@ -64,7 +64,7 @@ class DSBottomBarBackgroundPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 
   void _paintBottomRow(
     double index,
@@ -103,14 +103,6 @@ class DSBottomBarBackgroundPainter extends CustomPainter {
     }
   }
 
-  void _drawRect(Offset startPoint, Offset endPoint, CanvasArgs canvasArgs) {
-    Rect rect = Rect.fromPoints(startPoint, endPoint);
-    canvasArgs.canvas.drawRect(
-      rect,
-      canvasArgs.paint,
-    );
-  }
-
   void _pixelizedTripleRow(
     CanvasArgs canvasArgs,
     Color color,
@@ -123,6 +115,7 @@ class DSBottomBarBackgroundPainter extends CustomPainter {
     double startX2 = 4;
 
     Paint paint = canvasArgs.paint;
+    final commonpainters = Commonpainters();
 
     // Draw squares X and Y ordered like
     // X Y
@@ -131,36 +124,36 @@ class DSBottomBarBackgroundPainter extends CustomPainter {
       paint.color = color;
       final startPoint = Offset(startX, yOffset);
       final endPoint = Offset(startX + dashWidth, dashWidth + yOffset);
-      _drawRect(startPoint, endPoint, canvasArgs);
+      commonpainters.drawRect(startPoint, endPoint, canvasArgs);
 
       final startPoint2 = Offset(startX2, yOffset + dashWidth);
       final endPoint2 =
           Offset(startX2 + dashWidth, dashWidth + dashWidth + yOffset);
-      _drawRect(startPoint2, endPoint2, canvasArgs);
+      commonpainters.drawRect(startPoint2, endPoint2, canvasArgs);
 
       final startPoint5 = Offset(startX, dashWidth + dashWidth + yOffset);
       final endPoint5 = Offset(
         startX + dashWidth,
         dashWidth + dashWidth + dashWidth + yOffset,
       );
-      _drawRect(startPoint5, endPoint5, canvasArgs);
+      commonpainters.drawRect(startPoint5, endPoint5, canvasArgs);
 
       paint.color = lightenedColor;
       final startPoint3 = Offset(startX2, yOffset);
       final endPoint3 = Offset(startX2 + dashWidth, dashWidth + yOffset);
-      _drawRect(startPoint3, endPoint3, canvasArgs);
+      commonpainters.drawRect(startPoint3, endPoint3, canvasArgs);
 
       final startPoint4 = Offset(startX, dashWidth + yOffset);
       final endPoint4 =
           Offset(startX + dashWidth, dashWidth + dashWidth + yOffset);
-      _drawRect(startPoint4, endPoint4, canvasArgs);
+      commonpainters.drawRect(startPoint4, endPoint4, canvasArgs);
 
       final startPoint6 = Offset(startX2, dashWidth + dashWidth + yOffset);
       final endPoint6 = Offset(
         startX2 + dashWidth,
         dashWidth + dashWidth + dashWidth + yOffset,
       );
-      _drawRect(startPoint6, endPoint6, canvasArgs);
+      commonpainters.drawRect(startPoint6, endPoint6, canvasArgs);
 
       startX += dashWidth + dashSpace;
       startX2 += dashWidth + dashSpace;

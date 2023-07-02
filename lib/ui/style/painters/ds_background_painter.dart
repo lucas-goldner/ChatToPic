@@ -12,7 +12,7 @@ class DSBackgroundPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 
   void _paintLinesBackground(Canvas canvas, Size size) {
     // ScaleFactor is used to scale the background to the whole screen.

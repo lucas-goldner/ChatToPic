@@ -84,4 +84,68 @@ void main() {
     expect(find.byType(DSModal), findsNothing);
     expect(find.text(S.of(buildContext).beforeYouBegin), findsNothing);
   });
+
+  testWidgets('Test go through pages', (WidgetTester tester) async {
+    await tester.pumpWidget(makeTestableWidget(const OnboardingMain()));
+    when(() => mockSharedPrefCubit.setUsername("LucasG"))
+        .thenAnswer((_) => Future.value());
+    when(() => mockSharedPrefCubit.setOnboardingDone(true))
+        .thenAnswer((_) => Future.value());
+
+    // Page 0
+    expect(find.byKey(const Key('OnboardingBackground')), findsOneWidget);
+    expect(find.byKey(const Key('OnboardingBars')), findsOneWidget);
+    expect(find.byKey(const Key('OnboardingItem-0')), findsOneWidget);
+    expect(find.byType(DSModal), findsOneWidget);
+    expect(find.text(S.of(buildContext).beforeYouBegin), findsOneWidget);
+
+    await tester.tap(find.byType(DSModal).first);
+    await tester.pump();
+
+    // Page 1
+    expect(find.byKey(const Key('OnboardingItem-1')), findsOneWidget);
+    expect(find.byType(OnboardingNameInput), findsOneWidget);
+    expect(find.byType(DSModal), findsNothing);
+    expect(find.text(S.of(buildContext).beforeYouBegin), findsNothing);
+
+    final textField = find.byKey(const Key('OnboardingNameInputTextField'));
+    expect(
+        find.byKey(const Key('OnboardingNameInputBackground')), findsOneWidget);
+    expect(find.byKey(const Key('OnboardingNameInputBorders')), findsOneWidget);
+    expect(textField, findsOneWidget);
+    expect(find.byKey(const Key('OnboardingNameInputNamesSquares')),
+        findsOneWidget);
+    expect(
+        find.byKey(const Key('OnboardingNameInputButtonRow')), findsOneWidget);
+
+    await tester.enterText(textField, "LucasG");
+    expect(find.text("LucasG"), findsOneWidget);
+
+    final continueButton =
+        find.byKey(const Key('OnboardingNameInputContinueButton'));
+    expect(continueButton, findsOneWidget);
+    await tester.tap(continueButton);
+    await tester.pump();
+
+    // Page 2
+    expect(find.byKey(const Key('OnboardingItem-2')), findsOneWidget);
+    final onboardingBackButton = find.byKey(const Key('OnboardingBackButton'));
+    await tester.tap(onboardingBackButton);
+    await tester.pump();
+
+    // Page 1
+    expect(find.byKey(const Key('OnboardingItem-1')), findsOneWidget);
+    await tester.enterText(textField, "LucasG");
+    expect(find.text("LucasG"), findsOneWidget);
+    await tester.tap(continueButton);
+    await tester.pump();
+
+    // Page 2
+    expect(find.byKey(const Key('OnboardingItem-2')), findsOneWidget);
+    final selectButton = find.byKey(const Key("OnboardingSelectButton"));
+    await tester.tap(selectButton);
+    await tester.pump();
+
+    verify(() => mockSharedPrefCubit.setOnboardingDone(true)).called(1);
+  });
 }
