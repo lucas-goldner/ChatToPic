@@ -1,3 +1,12 @@
 {
-    "helloWorld": "こんにちはせかい!"
+  "beforeYouBegin": "始める前に、システム設定を調整する必要があります。タッチスクリーンをタッチするか、いずれかのボタンを押してください",
+  "chooseColor": "色を選ぶ",
+  "erase": "消す",
+  "input": "入力する",
+  "username": "ユーザーネーム",
+  "goBack": "戻る",
+  "select": "選ぶ",
+  "pleaseEnterName": "ユーザーネームを入力する",
+  "settings": "設定",
+  "join": "入る"
 }

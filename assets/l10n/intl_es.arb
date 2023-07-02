@@ -1,3 +1,12 @@
 {
-    "helloWorld": "¡Hola Mundo!"
+  "beforeYouBegin": "Antes de empezar, ajusta la configuración del sistema. Por favor, toque la pantalla táctil o pulse cualquier botón.",
+  "chooseColor": "Seleccione color",
+  "erase": "Borrar",
+  "input": "Ingresar",
+  "username": "Nombre",
+  "goBack": "Volver",
+  "select": "Seleccionar",
+  "pleaseEnterName": "Por favor ingresa un nombre",
+  "settings": "Configuración",
+  "join": "Entrar"
 }

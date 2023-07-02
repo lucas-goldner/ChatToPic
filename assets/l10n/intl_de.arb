@@ -1,3 +1,12 @@
 {
-    "helloWorld": "Hallo Welt!"
+  "beforeYouBegin": "Bevor du startest, musst du deine Systemeinstellungen anpassen. Bitte drücke auf den Touch Screen.",
+  "chooseColor": "Wähle Farbe",
+  "erase": "Löschen",
+  "input": "Eingeben",
+  "username": "Nutzername",
+  "goBack": "Zurück",
+  "select": "Auswählen",
+  "pleaseEnterName": "Bitte gebe einen Nutzernamen ein",
+  "settings": "Einstellungen",
+  "join": "Beitreten"
 }
