@@ -22,6 +22,11 @@ $ flutter run --flavor dev -t lib/flavours/main_dev.dart
 # For prod run
 $ flutter run --flavor prod -t lib/flavours/main_prod.dart
 
+OR
+
+Use VSCode and run the project, but make sure to change device identifier
+in ./vscode/launch.json when running the iOS configuration.
+
 ```
 
 Run tests:

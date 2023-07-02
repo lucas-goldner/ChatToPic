@@ -3,7 +3,7 @@ import 'package:chattopic/cubits/shared_pref/shared_pref_state.dart';
 import 'package:chattopic/model/enum/favorite_color.dart';
 import 'package:chattopic/ui/style/constants/chat_to_pic_color_select_constants.dart';
 import 'package:chattopic/ui/style/constants/chat_to_pic_colors.dart';
-import 'package:chattopic/ui/onboarding/color/onboarding_color_select.dart';
+import 'package:chattopic/ui/onboarding/color/widgets/onboarding_color_select.dart';
 import 'package:chattopic/ui/shared/dashed_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
