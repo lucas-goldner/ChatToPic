@@ -33,10 +33,18 @@ class _OnboardingMainState extends State<OnboardingMain> {
       onTap: () => index == 0 ? goToNextPage() : null,
       child: Stack(
         children: [
-          const DSBackground(),
-          const DSBars(),
+          const DSBackground(
+            key: Key("OnboardingBackground"),
+          ),
+          const DSBars(
+            key: Key("OnboardingBars"),
+          ),
           Center(
-            child: OnboardingItem(index, goToNextPage),
+            child: OnboardingItem(
+              index,
+              goToNextPage,
+              key: Key("OnboardingItem-$index"),
+            ),
           ),
           Visibility(
             visible: index == 2,
@@ -47,6 +55,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     DSButton(
+                      key: const Key("OnboardingBackButton"),
                       title: translate.goBack,
                       letter: "B",
                       callback: goToLastPage,
@@ -56,6 +65,7 @@ class _OnboardingMainState extends State<OnboardingMain> {
                       width: 40,
                     ),
                     DSButton(
+                      key: const Key("OnboardingSelectButton"),
                       title: translate.select,
                       letter: "A",
                       optionalButtonXOffset: 28,

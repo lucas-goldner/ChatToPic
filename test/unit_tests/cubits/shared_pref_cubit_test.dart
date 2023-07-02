@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../mocks/data/mock_shared_pref_data.dart';
-import '../../mocks/mock_provider/sharedpref_provider_mock.dart';
+import '../../mocks/provider/sharedpref_provider_mock.dart';
 
 void main() {
   late SharedPrefProvider sharedPrefProvider;

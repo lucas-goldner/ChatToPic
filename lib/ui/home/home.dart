@@ -18,10 +18,14 @@ class _HomeState extends State<Home> {
 
     return Stack(
       children: [
-        const DSBackground(),
-        const DSBars(),
+        const DSBackground(
+          key: Key("HomeBackground"),
+        ),
+        const DSBars(
+          key: Key("HomeBars"),
+        ),
         const Center(
-          child: Text("MOIN"),
+          child: Text("HOME"),
         ),
         Column(
           children: [
@@ -30,6 +34,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DSButton(
+                  key: const Key("HomeSettings"),
                   title: translate.settings,
                   letter: "B",
                   optionalButtonXOffset: 20,
@@ -38,6 +43,7 @@ class _HomeState extends State<Home> {
                   width: 40,
                 ),
                 DSButton(
+                  key: const Key("HomeJoin"),
                   title: translate.join,
                   letter: "A",
                   optionalButtonXOffset: 36,
