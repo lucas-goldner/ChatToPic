@@ -1,5 +1,6 @@
 import 'package:chattopic/generated/l10n.dart';
-import 'package:chattopic/ui/shared/ds_background.dart';
+import 'package:chattopic/ui/home/widgets/chat_room.dart';
+import 'package:chattopic/ui/home/widgets/home_background.dart';
 import 'package:chattopic/ui/shared/ds_bars.dart';
 import 'package:chattopic/ui/shared/ds_button.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +19,21 @@ class _HomeState extends State<Home> {
 
     return Stack(
       children: [
-        const DSBackground(
+        const HomeBackground(
           key: Key("HomeBackground"),
         ),
         const DSBars(
           key: Key("HomeBars"),
         ),
         const Center(
-          child: Text("HOME"),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Spacer(),
+              ChatRoom(),
+              Spacer(),
+            ],
+          ),
         ),
         Column(
           children: [

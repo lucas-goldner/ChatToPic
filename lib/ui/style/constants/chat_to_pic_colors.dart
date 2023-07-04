@@ -7,6 +7,8 @@ class ChatToPicColors {
   static const dsModalBackgroundColor = Color(0xFF484848);
   static const colorsContainer = Color(0xFFAAAAAA);
   static const colorsContainerSecondBorder = Color(0xFF929292);
+  static const homeBackgroundColor = Color(0xFFA0A2A1);
+  static const homeBackgroundLineColor = Color(0xFFB5B7B6);
 
   // Colors to choose from.
   static const dsGreyColor = Color(0xFF61829A);

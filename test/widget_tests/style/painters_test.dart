@@ -6,6 +6,7 @@ import 'package:chattopic/ui/style/painters/ds_button_painter.dart';
 import 'package:chattopic/ui/style/painters/ds_default_background_color_painter.dart';
 import 'package:chattopic/ui/style/painters/ds_modal_background_painter.dart';
 import 'package:chattopic/ui/style/painters/ds_top_bar_background_painter.dart';
+import 'package:chattopic/ui/style/painters/home_background_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -54,5 +55,10 @@ void main() {
         DSTopBarBackgroundPainter(FavoriteColor.blue);
     expect(dsTopBarBackgroundPainter.shouldRepaint(dsTopBarBackgroundPainter),
         true);
+  });
+
+  test('Test HomeBackgroundPainter shouldRepaint', () {
+    final homeBackgroundPainter = HomeBackgroundPainter();
+    expect(homeBackgroundPainter.shouldRepaint(homeBackgroundPainter), true);
   });
 }

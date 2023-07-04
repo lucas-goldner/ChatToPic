@@ -2,8 +2,8 @@ import 'package:chattopic/helper/canvas_args.dart';
 import 'package:chattopic/ui/style/painters/common_painters.dart';
 import 'package:flutter/material.dart';
 
-class DSButtonPainter extends CustomPainter {
-  DSButtonPainter({double? optionalButtonXOffset})
+class ChatRoomPainter extends CustomPainter {
+  ChatRoomPainter({double? optionalButtonXOffset})
       : buttonXOffset = optionalButtonXOffset ?? 36;
   final double buttonXOffset;
 
@@ -37,9 +37,6 @@ class DSButtonPainter extends CustomPainter {
     _paintVerticalLine(2, canvasArgs);
     _paintVerticalLine(size.width - 1, canvasArgs);
 
-    paint.color = Colors.black;
-    _paintDrawLetterButton(canvasArgs, buttonXOffset);
-
     paint.color = const Color.fromARGB(255, 199, 199, 198);
     canvas.drawLine(
       const Offset(1, 2),
@@ -55,61 +52,58 @@ class DSButtonPainter extends CustomPainter {
     final commonPainters = Commonpainters();
     commonPainters.pixelizedRow(
       canvasArgs,
-      const Color.fromARGB(255, 199, 199, 198),
-      const Color.fromARGB(255, 213, 213, 213),
-      2,
-    );
-
-    commonPainters.pixelizedRow(
-      canvasArgs,
-      const Color.fromARGB(255, 215, 215, 215),
-      const Color.fromARGB(255, 230, 230, 230),
-      10,
-    );
-
-    commonPainters.pixelizedRow(
-      canvasArgs,
-      const Color.fromARGB(255, 227, 227, 227),
-      const Color.fromARGB(255, 242, 242, 242),
-      18,
+      Colors.white,
+      Colors.white,
+      0,
     );
 
     commonPainters.pixelizedRow(
       canvasArgs,
       const Color.fromARGB(255, 255, 255, 255),
       const Color.fromARGB(255, 242, 242, 242),
+      8,
+    );
+
+    commonPainters.pixelizedRow(
+      canvasArgs,
+      const Color.fromARGB(255, 255, 255, 255),
+      const Color.fromARGB(255, 242, 242, 242),
+      16,
+    );
+
+    commonPainters.pixelizedRow(
+      canvasArgs,
+      const Color.fromARGB(255, 227, 227, 227),
+      const Color.fromARGB(255, 242, 242, 242),
       24,
     );
-  }
 
-  _paintDrawLetterButton(CanvasArgs canvasArgs, double xPos) {
-    double basicSize = 12;
-
-    canvasArgs.canvas.drawRect(
-      Rect.fromCenter(
-        center: Offset(xPos, 16),
-        width: basicSize + 2,
-        height: basicSize + 2,
-      ),
-      canvasArgs.paint,
+    commonPainters.pixelizedRow(
+      canvasArgs,
+      const Color.fromARGB(255, 242, 242, 242),
+      const Color.fromARGB(255, 227, 227, 227),
+      30,
     );
 
-    canvasArgs.canvas.drawRect(
-      Rect.fromCenter(
-        center: Offset(xPos, 16),
-        width: basicSize - 2,
-        height: basicSize + 6,
-      ),
-      canvasArgs.paint,
+    commonPainters.pixelizedRow(
+      canvasArgs,
+      const Color.fromARGB(255, 242, 242, 242),
+      const Color.fromARGB(255, 227, 227, 227),
+      38,
     );
 
-    canvasArgs.canvas.drawRect(
-      Rect.fromCenter(
-        center: Offset(xPos, 16),
-        width: basicSize + 6,
-        height: basicSize - 2,
-      ),
-      canvasArgs.paint,
+    commonPainters.pixelizedRow(
+      canvasArgs,
+      const Color.fromARGB(255, 199, 199, 198),
+      const Color.fromARGB(255, 213, 213, 213),
+      44,
+    );
+
+    commonPainters.pixelizedRow(
+      canvasArgs,
+      const Color.fromARGB(255, 199, 199, 198),
+      const Color.fromARGB(255, 213, 213, 213),
+      52,
     );
   }
 
